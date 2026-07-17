@@ -1,0 +1,806 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Website Preview</title></head><body>
+<style>@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');</style>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',system-ui,sans-serif;background:#fff5e6;color:#2a1a00;line-height:1.6;min-height:100vh}
+
+a{text-decoration:none;color:inherit}
+nav{position:sticky;top:0;z-index:100;background:#fff5e6;backdrop-filter:blur(16px);border-bottom:1px solid #e5e7eb;padding:0 5%}
+.nav-inner{max-width:1100px;margin:0 auto;height:66px;display:flex;align-items:center;gap:24px}
+.nav-logo{font-size:18px;font-weight:800;color:#ff9800;flex:1}
+.sf-nav-link{font-size:13px;color:#6b7280;cursor:pointer;padding:5px 10px;border-radius:6px;transition:all .2s;font-weight:500}
+.sf-nav-link:hover,.sf-nav-link.active{color:#ff9800;font-weight:700}
+.nav-cta{background:#ff9800;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:transform .2s}
+.nav-cta:hover{transform:translateY(-2px)}
+.ham{display:none;font-size:24px;background:none;border:none;color:#2a1a00;cursor:pointer}
+@media(max-width:768px){
+  .nav-links-d{display:none!important}
+  .ham{display:block}
+}
+#mob-menu-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px);z-index:1999;animation:fadeIn 0.3s forwards}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+#mob-menu{display:none;flex-direction:column;gap:16px;padding:80px 24px 24px;background:rgba(255,255,255,0.95);backdrop-filter:blur(16px);position:fixed;top:0;right:0;width:280px;height:100vh;z-index:2000;box-shadow:-4px 0 24px rgba(0,0,0,0.15);animation:slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards}
+@keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.mob-close{position:absolute;top:20px;right:20px;background:none;border:none;font-size:28px;color:#2a1a00;cursor:pointer;transition:transform 0.2s}
+.mob-close:hover{transform:rotate(90deg)}
+
+/* HERO */
+.hero{padding:96px 5% 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 60% 20%,#ff980020 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr}.hero-visual{display:none}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#ff980018;border:1px solid #ff980035;color:#ff9800;font-size:11px;font-weight:700;padding:5px 13px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin-bottom:22px}
+.hero-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:#ff9800;display:block}
+.hero h1{font-size:clamp(34px,5vw,56px);font-weight:900;line-height:1.05;letter-spacing:-1.5px;margin-bottom:18px}
+.hero h1 em{color:#ff9800;font-style:normal}
+.hero p{font-size:16px;color:#6b7280;max-width:460px;line-height:1.75;margin-bottom:28px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-p{background:#ff9800;color:#fff;padding:12px 26px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;border:none;transition:all .2s;box-shadow:0 4px 20px #ff980040}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 32px #ff980050}
+.btn-s{background:transparent;border:2px solid #e5e7eb;color:#2a1a00;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-s:hover{border-color:#ff9800;color:#ff9800}
+.hero-visual{position:relative}
+.hero-img{border-radius:18px;overflow:hidden;aspect-ratio:4/3}
+.hero-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.95)}
+.hero-stat-badge{position:absolute;bottom:16px;left:16px;background:rgba(255,255,255,.9);border-radius:12px;padding:12px 16px;display:flex;gap:12px;align-items:center;backdrop-filter:blur(8px)}
+.sb-val{font-size:22px;font-weight:900;color:#ff9800;line-height:1}
+.sb-lbl{font-size:11px;color:#6b7280;font-weight:600}
+
+/* STATS BAR */
+.stats-bar{padding:24px 5%;background:#f9fafb;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb}
+.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+@media(max-width:500px){.stats-inner{grid-template-columns:repeat(2,1fr)}}
+.sv{font-size:28px;font-weight:900;color:#ff9800;display:block}
+.sl{font-size:12px;color:#6b7280;margin-top:3px}
+
+/* SECTIONS */
+.section{padding:76px 5%}
+.sec-in{max-width:1100px;margin:0 auto}
+.alt{background:#f9fafb}
+.sec-head{margin-bottom:48px}
+.sec-head.c{text-align:center}
+.sec-head.c .sec-p{margin:0 auto}
+.sec-eyebrow{display:inline-block;background:#ff980015;color:#ff9800;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.sec-head h2{font-size:clamp(26px,3vw,40px);font-weight:900;letter-spacing:-1px;margin-bottom:10px}
+.sec-p{font-size:15px;color:#6b7280;max-width:500px;line-height:1.7}
+
+/* SERVICE CARDS */
+.srv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.srv-card{background:#ffffff;border:1px solid #e5e7eb;border-radius:14px;padding:24px;transition:all .3s;position:relative;overflow:hidden}
+.srv-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:#ff9800;transform:scaleY(0);transition:transform .3s;transform-origin:bottom}
+.srv-card:hover::after{transform:scaleY(1)}
+.srv-card:hover{border-color:#ff980040;box-shadow:0 8px 32px #ff980015;transform:translateY(-3px)}
+.srv-icon{font-size:32px;margin-bottom:14px}
+.srv-card h3{font-size:15px;font-weight:800;margin-bottom:8px;color:#2a1a00}
+.srv-card p{font-size:13px;color:#6b7280;line-height:1.6}
+
+/* ABOUT */
+.about-g{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media(max-width:768px){.about-g{grid-template-columns:1fr}}
+.about-img{border-radius:16px;overflow:hidden;aspect-ratio:4/3}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-text h2{font-size:clamp(24px,3vw,38px);font-weight:900;letter-spacing:-1px;margin-bottom:14px}
+.about-text p{color:#6b7280;line-height:1.8;font-size:15px;margin-bottom:12px}
+.chk-list{list-style:none;margin-top:18px}
+.chk-list li{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid #e5e7eb;font-size:14px;color:#2a1a00}
+.chk-icon{color:#ff9800;font-size:16px;font-weight:900;flex-shrink:0;margin-top:1px}
+
+/* PORTFOLIO */
+.port-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.port-card{border-radius:14px;overflow:hidden;position:relative;cursor:pointer}
+.port-card img{width:100%;height:220px;object-fit:cover;display:block;transition:transform .4s}
+.port-card:hover img{transform:scale(1.04)}
+.port-info{padding:16px;background:#ffffff;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 14px 14px}
+.port-info h3{font-size:14px;font-weight:700;color:#2a1a00;margin-bottom:4px}
+.port-info span{font-size:12px;color:#6b7280}
+
+/* REVIEWS */
+.rev-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+.rev-card{background:#ffffff;border:1px solid #e5e7eb;border-radius:14px;padding:22px;transition:all .3s}
+.rev-card:hover{border-color:#ff980040;transform:translateY(-2px)}
+.rev-stars{color:#f59e0b;font-size:13px;margin-bottom:10px}
+.rev-text{font-size:14px;color:#6b7280;line-height:1.7;margin-bottom:16px;font-style:italic}
+.rev-author{display:flex;align-items:center;gap:10px}
+.rev-avatar{width:38px;height:38px;border-radius:50%;background:#ff9800;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.rev-name{font-weight:700;font-size:14px;color:#2a1a00}
+.rev-date{font-size:12px;color:#6b7280}
+
+/* FAQ */
+.faq-wrap{max-width:700px;margin:0 auto}
+.faq-item{border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;margin-bottom:10px}
+.faq-q{padding:18px 20px;cursor:pointer;font-weight:700;font-size:15px;color:#2a1a00;display:flex;justify-content:space-between;align-items:center;background:#ffffff;user-select:none;transition:background .2s}
+.faq-q:hover{background:#ff98000a}
+.faq-icon{color:#ff9800;font-size:20px;font-weight:300;flex-shrink:0}
+.faq-a{display:none;padding:16px 20px 20px;font-size:14px;color:#6b7280;line-height:1.75;background:#f9fafb;border-top:1px solid #e5e7eb}
+
+/* CONTACT */
+.ctc-g{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:start}
+@media(max-width:768px){.ctc-g{grid-template-columns:1fr}}
+.ctc-info h2{font-size:clamp(24px,2.5vw,36px);font-weight:900;letter-spacing:-0.5px;margin-bottom:12px}
+.ctc-info p{color:#6b7280;line-height:1.8;font-size:15px;margin-bottom:24px}
+.ctc-row{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid #e5e7eb}
+.ctc-ic{width:42px;height:42px;background:#ff980015;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.ctc-lbl{font-size:11px;color:#6b7280;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.ctc-val{font-size:14px;font-weight:700;color:#2a1a00}
+.ctc-form{background:#ffffff;border:1px solid #e5e7eb;border-radius:16px;padding:28px}
+.ctc-form-title{font-size:18px;font-weight:800;color:#2a1a00;margin-bottom:22px}
+.ff{margin-bottom:14px}
+.ff label{display:block;font-size:11px;color:#6b7280;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px}
+.ff input,.ff select,.ff textarea{width:100%;padding:11px 14px;background:#fff5e6;border:1.5px solid #e5e7eb;border-radius:8px;color:#2a1a00;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s}
+.ff input:focus,.ff textarea:focus,.ff select:focus{border-color:#ff9800}
+.ff select option{background:#fff5e6}
+.ff textarea{min-height:88px;resize:vertical}
+.ff-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:480px){.ff-row{grid-template-columns:1fr}}
+.sub-btn{width:100%;padding:13px;background:#ff9800;border:none;border-radius:8px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit}
+.sub-btn:hover{opacity:.9}
+.succ{display:none;background:#d1fae5;border:1px solid #6ee7b7;color:#065f46;padding:12px;border-radius:8px;text-align:center;font-size:14px;margin-top:10px}
+
+/* CTA BAND */
+.cta-band{background:#ff9800;padding:60px 5%;text-align:center}
+.cta-band h2{font-size:clamp(26px,3vw,40px);font-weight:900;letter-spacing:-1px;color:#fff;margin-bottom:12px}
+.cta-band p{color:rgba(255,255,255,.85);margin-bottom:28px;font-size:16px}
+.btn-inv{background:#fff;color:#ff9800;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;border:none;cursor:pointer;transition:all .2s}
+.btn-inv:hover{transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:#111;color:rgba(255,255,255,.6);padding:44px 5% 22px;border-top:1px solid transparent}
+.foot-in{max-width:1100px;margin:0 auto}
+.foot-g{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
+@media(max-width:768px){.foot-g{grid-template-columns:1fr 1fr}}
+@media(max-width:400px){.foot-g{grid-template-columns:1fr}}
+.foot-brand .fl{font-size:18px;font-weight:800;color:#ff9800;margin-bottom:8px}
+.foot-brand p{font-size:13px;line-height:1.7}
+.foot-col h4{color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px}
+.foot-col a{display:block;color:rgba(255,255,255,.4);font-size:13px;padding:3px 0;transition:color .2s;cursor:pointer}
+.foot-col a:hover{color:#ff9800}
+.foot-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px}
+
+/* EMERGENCY BAR */
+.emg{background:#ff9800;color:#fff;text-align:center;padding:10px 5%;font-size:14px;font-weight:700}
+
+/* MOBILE BOTTOM NAV */
+.mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  z-index: 1000;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  height: 65px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+}
+.mb-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  color: #6b7280;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.mb-nav-item.mb-active { color: #ff9800; }
+.mb-nav-item svg {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 4px;
+  fill: currentColor;
+}
+.mb-center {
+  position: relative;
+  top: -20px;
+  flex: 0 0 70px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+.mb-center-in {
+  width: 60px;
+  height: 60px;
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 4px;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mb-center-in img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+@media(max-width:768px) {
+  .mobile-bottom-nav { display: flex; }
+  body { padding-bottom: 65px; }
+}
+
+.float-btn { position: fixed; bottom: 85px; right: 20px; background: #ff9800; color: #fff; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px #ff980060; z-index: 100; text-decoration: none; animation: floatPulse 3s ease-in-out infinite; }
+@keyframes floatPulse { 0% { transform: translateY(0) scale(1); box-shadow: 0 4px 12px #ff980060; } 50% { transform: translateY(-6px) scale(1.05); box-shadow: 0 12px 24px #ff980040; } 100% { transform: translateY(0) scale(1); box-shadow: 0 4px 12px #ff980060; } }
+@media(min-width: 769px) { .float-btn { bottom: 30px; right: 30px; width: 64px; height: 64px; } }
+.sf-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); z-index: 3000; align-items: center; justify-content: center; padding: 20px; animation: fadeIn 0.2s; }
+.sf-modal-inner { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; width: 100%; max-width: 500px; padding: 32px; position: relative; animation: modalIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; transform: translateY(20px) scale(0.95); opacity: 0; }
+@keyframes modalIn { to { transform: translateY(0) scale(1); opacity: 1; } }
+.sf-modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 24px; color: #2a1a00; cursor: pointer; transition: transform 0.2s; }
+.sf-modal-close:hover{transform:rotate(90deg)}
+body{background:#fff5e6!important}
+    nav{background:rgba(255,245,230,0.98)!important;border-bottom:2px solid #ffe0b2!important}
+    .hero{background:linear-gradient(160deg,#fff5e6 0%,#ffe0b2 100%)!important}
+    .hero::before{background:radial-gradient(ellipse at 70% 30%,rgba(255,152,0,0.15) 0%,transparent 60%)!important}
+    .stats-bar{background:#ff9800!important;border:none!important}
+    .sv,.sl{color:#fff!important}
+    .srv-card{border-radius:20px!important;border-top:3px solid #ff9800!important;border-left:none!important;border-right:none!important}
+    .srv-card::after{display:none}
+    .btn-p{border-radius:30px!important}
+    h1,h2{font-weight:900!important}
+    .hero-img img{filter:brightness(.9) saturate(1.1)}
+</style>
+<div class="emg">24/7 Emergency Home Builders — Call: +91 98765 43210</div>
+<nav><div class="nav-inner">
+  <div class="nav-logo">Shreyash Ljdhgdsukhbdk</div>
+  <div style="display:flex;gap:4px" class="nav-links-d">
+    <span class="sf-nav-link active" data-page="home" onclick="showPage('home')">Home</span>
+    <span class="sf-nav-link" data-page="about" onclick="showPage('about')">About Us</span>
+    <span class="sf-nav-link" data-page="services" onclick="showPage('services')">Services</span>
+    <span class="sf-nav-link" data-page="portfolio" onclick="showPage('portfolio')">Portfolio</span>
+    <span class="sf-nav-link" data-page="reviews" onclick="showPage('reviews')">Reviews</span>
+    <span class="sf-nav-link" data-page="faq" onclick="showPage('faq')">FAQ</span>
+    <span class="sf-nav-link" data-page="contact" onclick="showPage('contact')">Contact</span>
+  </div>
+  <button class="nav-cta" onclick="showPage('bookings')">Book Now</button>
+  <button class="ham" onclick="toggleMob()">☰</button>
+</div></nav>
+<div id="mob-menu-overlay" onclick="toggleMob()"></div>
+<div id="mob-menu">
+  <button class="mob-close" onclick="toggleMob()">✕</button>
+  <span class="sf-nav-link active" data-page="home" onclick="showPage('home')">Home</span>
+  <span class="sf-nav-link" data-page="about" onclick="showPage('about')">About Us</span>
+  <span class="sf-nav-link" data-page="services" onclick="showPage('services')">Services</span>
+  <span class="sf-nav-link" data-page="portfolio" onclick="showPage('portfolio')">Portfolio</span>
+  <span class="sf-nav-link" data-page="reviews" onclick="showPage('reviews')">Reviews</span>
+  <span class="sf-nav-link" data-page="faq" onclick="showPage('faq')">FAQ</span>
+  <span class="sf-nav-link" data-page="contact" onclick="showPage('contact')">Contact</span>
+</div>
+
+<div id="page-home" class="sf-page">
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">15+ Years · Pune, Maharashtra</div>
+        <h1>Expert <em>Home Builders</em><br>You Can Trust</h1>
+        <p>Building Dream Homes with Precision, Quality &amp; Care</p>
+        <div class="hero-btns">
+          <button class="btn-p" onclick="showPage('bookings')">Book a Service</button>
+          <button class="btn-s" onclick="showPage('portfolio')">View Our Work</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img"><img src="https://images.pexels.com/photos/8961624/pexels-photo-8961624.jpeg" alt="Home Builders" loading="lazy"></div>
+        <div class="hero-stat-badge">
+          <div><div class="sb-val">4.8★</div><div class="sb-lbl">Rating</div></div>
+          <div style="width:1px;height:32px;background:#e5e7eb"></div>
+          <div><div class="sb-val">342+</div><div class="sb-lbl">Reviews</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div><span class="sv">4.8★</span><span class="sl">Google Rating</span></div>
+      <div><span class="sv">342+</span><span class="sl">Happy Clients</span></div>
+      <div><span class="sv">15+</span><span class="sl">Years Experience</span></div>
+      <div><span class="sv">2500+</span><span class="sl">Jobs Completed</span></div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="sec-in">
+      <div class="sec-head c"><div class="sec-eyebrow">Services</div><h2>What We Do</h2><p class="sec-p">Professional home builders solutions for homes &amp; businesses in Pune, Maharashtra</p></div>
+      <div class="srv-grid">
+    <div class="srv-card" onclick="openServiceModal('Custom Home Building', 'Professional custom home building services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+      <h3>Custom Home Building</h3>
+      <p>Professional custom home building services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Spec Home Construction', 'Professional spec home construction services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+      <h3>Spec Home Construction</h3>
+      <p>Professional spec home construction services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Semi-Custom Homes', 'Professional semi-custom homes services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+      <h3>Semi-Custom Homes</h3>
+      <p>Professional semi-custom homes services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Green Building', 'Professional green building services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Green Building</h3>
+      <p>Professional green building services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Luxury Home Construction', 'Professional luxury home construction services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+      <h3>Luxury Home Construction</h3>
+      <p>Professional luxury home construction services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Floor Plan Design', 'Professional floor plan design services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Floor Plan Design</h3>
+      <p>Professional floor plan design services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  </div>
+    </div>
+  </div>
+  <div class="alt section">
+    <div class="sec-in">
+      <div class="sec-head c"><div class="sec-eyebrow">Reviews</div><h2>Client Testimonials</h2><p class="sec-p">4.8★ average · 342+ reviews</p></div>
+      <div class="rev-g">
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"Built our dream home and it exceeded every expectation. The design-build process was smooth and the finishes are spectacular."</p>
+      <div class="rev-author">
+        <div class="rev-avatar">L</div>
+        <div><div class="rev-name">Lawrence Baker</div><div class="rev-date">2 weeks ago</div></div>
+      </div>
+    </div>
+  
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"As first-time custom home clients, they guided us through every decision patiently. The result is stunning — we love our home."</p>
+      <div class="rev-author">
+        <div class="rev-avatar">P</div>
+        <div><div class="rev-name">Phyllis Carter</div><div class="rev-date">1 month ago</div></div>
+      </div>
+    </div>
+  
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"Green building certification achieved exactly as promised. Energy bills are remarkably low and the quality is outstanding."</p>
+      <div class="rev-author">
+        <div class="rev-avatar">S</div>
+        <div><div class="rev-name">Stanley Morris</div><div class="rev-date">1 month ago</div></div>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="sec-in">
+      <div class="sec-head c"><div class="sec-eyebrow">Why Choose Us</div><h2>The Shreyash Ljdhgdsukhbdk Promise</h2></div>
+      <div class="srv-grid">
+        <div class="srv-card"><div class="srv-icon">🏆</div><h3>Expert Team</h3><p>Certified professionals with years of hands-on experience in Pune, Maharashtra.</p></div><div class="srv-card"><div class="srv-icon">⚡</div><h3>Quick Response</h3><p>Bookings confirmed within 2 hours. Emergency calls in under 60 minutes.</p></div><div class="srv-card"><div class="srv-icon">💰</div><h3>Honest Pricing</h3><p>Transparent quotes. No surprise charges. Competitive rates.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="cta-band">
+    <h2>Ready to Book a Home Builders?</h2>
+    <p>Emergency response within 60 minutes. Serving Pune, Maharashtra 24/7.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <button class="btn-inv" onclick="showPage('bookings')">Book Now</button>
+      <a href="tel:+91 98765 43210" style="background:transparent;border:2px solid rgba(255,255,255,.5);color:#fff;padding:12px 26px;border-radius:8px;font-size:14px;font-weight:700">+91 98765 43210</a>
+    </div>
+  </div>
+</div>
+
+<div id="page-services" class="sf-page" style="display:none">
+  <div class="section">
+    <div class="sec-in">
+      <div class="sec-head c"><div class="sec-eyebrow">All Services</div><h2>Comprehensive Home Solutions</h2><p class="sec-p">Professional services tailored to your needs in Pune, Maharashtra</p></div>
+      <div class="srv-grid">
+    <div class="srv-card" onclick="openServiceModal('Custom Home Building', 'Professional custom home building services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+      <h3>Custom Home Building</h3>
+      <p>Professional custom home building services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Spec Home Construction', 'Professional spec home construction services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+      <h3>Spec Home Construction</h3>
+      <p>Professional spec home construction services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Semi-Custom Homes', 'Professional semi-custom homes services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+      <h3>Semi-Custom Homes</h3>
+      <p>Professional semi-custom homes services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Green Building', 'Professional green building services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Green Building</h3>
+      <p>Professional green building services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Luxury Home Construction', 'Professional luxury home construction services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+      <h3>Luxury Home Construction</h3>
+      <p>Professional luxury home construction services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Floor Plan Design', 'Professional floor plan design services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Floor Plan Design</h3>
+      <p>Professional floor plan design services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  </div>
+    </div>
+  </div>
+</div>
+
+<div id="page-about" class="sf-page" style="display:none">
+  <div class="section">
+    <div class="sec-in">
+      <div class="about-g">
+        <div class="about-img"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="About" loading="lazy"></div>
+        <div class="about-text">
+          <div class="sec-eyebrow">About Shreyash Ljdhgdsukhbdk</div>
+          <h2>Trusted Home Builders Specialists Since 2011</h2>
+          <p>With over <strong>15 years</strong> serving Pune, Maharashtra, Shreyash Ljdhgdsukhbdk has earned a reputation for reliable, professional home-builders services. Our team of 12 certified specialists brings expertise and dedication to every job.</p>
+          <p>We started as a small local operation and have grown into Pune, Maharashtra's most trusted home builders service — with 2500+ completed projects and 342+ satisfied customers to show for it.</p>
+          <ul class="chk-list">
+            <li><span class="chk-icon">✓</span>Licensed &amp; fully insured professionals</li>
+            <li><span class="chk-icon">✓</span>No hidden fees — transparent pricing</li>
+            <li><span class="chk-icon">✓</span>24/7 emergency coverage</li>
+            <li><span class="chk-icon">✓</span>30-day workmanship guarantee</li>
+            <li><span class="chk-icon">✓</span>Team of 12 certified experts</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="alt section">
+    <div class="sec-in">
+      <div class="sec-head c"><div class="sec-eyebrow">Contact</div><h2>Get a Free Estimate</h2></div>
+      <div style="text-align:center"><button class="btn-p" onclick="showPage('bookings')">Book Now</button></div>
+    </div>
+  </div>
+</div>
+
+<div id="page-portfolio" class="sf-page" style="display:none">
+  <div class="section">
+    <div class="sec-in">
+      <div class="sec-head c"><div class="sec-eyebrow">Portfolio</div><h2>Recent Projects</h2><p class="sec-p">2500+ completed projects in Pune, Maharashtra</p></div>
+      <div class="port-g">
+    <div class="port-card">
+      <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80" alt="Home-builders Project — Residential" loading="lazy">
+      <div class="port-info"><h3>Home-builders Project — Residential</h3><span>2024 · Pune, Maharashtra</span></div>
+    </div>
+  
+    <div class="port-card">
+      <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Commercial Custom Home Building Installation" loading="lazy">
+      <div class="port-info"><h3>Commercial Custom Home Building Installation</h3><span>2023 · Pune, Maharashtra</span></div>
+    </div>
+  
+    <div class="port-card">
+      <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80" alt="Emergency home-builders Work" loading="lazy">
+      <div class="port-info"><h3>Emergency home-builders Work</h3><span>2022 · Pune, Maharashtra</span></div>
+    </div>
+  
+    <div class="port-card">
+      <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=800&q=80" alt="Premium Spec Home Construction Setup" loading="lazy">
+      <div class="port-info"><h3>Premium Spec Home Construction Setup</h3><span>2021 · Pune, Maharashtra</span></div>
+    </div>
+  </div>
+      <div style="margin-top:56px"><div class="sec-head c"><div class="sec-eyebrow">All Services</div><h2>Our Full Service Range</h2></div><div class="srv-grid">
+    <div class="srv-card" onclick="openServiceModal('Custom Home Building', 'Professional custom home building services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+      <h3>Custom Home Building</h3>
+      <p>Professional custom home building services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Spec Home Construction', 'Professional spec home construction services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+      <h3>Spec Home Construction</h3>
+      <p>Professional spec home construction services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Semi-Custom Homes', 'Professional semi-custom homes services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+      <h3>Semi-Custom Homes</h3>
+      <p>Professional semi-custom homes services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Green Building', 'Professional green building services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Green Building</h3>
+      <p>Professional green building services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Luxury Home Construction', 'Professional luxury home construction services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
+      <h3>Luxury Home Construction</h3>
+      <p>Professional luxury home construction services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Floor Plan Design', 'Professional floor plan design services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Floor Plan Design</h3>
+      <p>Professional floor plan design services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  </div></div>
+    </div>
+  </div>
+</div>
+
+<div id="page-reviews" class="sf-page" style="display:none">
+  <div class="section">
+    <div class="sec-in">
+      <div class="sec-head c"><div class="sec-eyebrow">Reviews</div><h2>What Our Clients Say</h2><p class="sec-p">4.8★ from 342+ reviews</p></div>
+      <div class="rev-g">
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"Built our dream home and it exceeded every expectation. The design-build process was smooth and the finishes are spectacular."</p>
+      <div class="rev-author">
+        <div class="rev-avatar">L</div>
+        <div><div class="rev-name">Lawrence Baker</div><div class="rev-date">2 weeks ago</div></div>
+      </div>
+    </div>
+  
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"As first-time custom home clients, they guided us through every decision patiently. The result is stunning — we love our home."</p>
+      <div class="rev-author">
+        <div class="rev-avatar">P</div>
+        <div><div class="rev-name">Phyllis Carter</div><div class="rev-date">1 month ago</div></div>
+      </div>
+    </div>
+  
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"Green building certification achieved exactly as promised. Energy bills are remarkably low and the quality is outstanding."</p>
+      <div class="rev-author">
+        <div class="rev-avatar">S</div>
+        <div><div class="rev-name">Stanley Morris</div><div class="rev-date">1 month ago</div></div>
+      </div>
+    </div>
+  
+    <div class="rev-card">
+      <div class="rev-stars">★★★★☆</div>
+      <p class="rev-text">"Smart home integration is phenomenal. Every system was installed and programmed to work together perfectly."</p>
+      <div class="rev-author">
+        <div class="rev-avatar">M</div>
+        <div><div class="rev-name">Mildred Ward</div><div class="rev-date">2 months ago</div></div>
+      </div>
+    </div>
+  
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"Third home we've built with this company. They consistently deliver luxury quality on schedule. Truly the best builder in the area."</p>
+      <div class="rev-author">
+        <div class="rev-avatar">B</div>
+        <div><div class="rev-name">Bernard Bailey</div><div class="rev-date">2 months ago</div></div>
+      </div>
+    </div>
+  
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"Warranty service after move-in has been prompt and professional. They stand behind their work long after closing."</p>
+      <div class="rev-author">
+        <div class="rev-avatar">R</div>
+        <div><div class="rev-name">Rose Bell</div><div class="rev-date">3 months ago</div></div>
+      </div>
+    </div>
+  </div>
+      <div style="margin-top:40px;padding:32px;background:#ff980012;border:1px solid #ff980025;border-radius:16px;text-align:center">
+        <div style="font-size:56px;font-weight:900;color:#ff9800;line-height:1">4.8</div>
+        <div style="color:#f59e0b;font-size:22px;margin:8px 0">★★★★★</div>
+        <div style="font-size:16px;font-weight:700;margin-bottom:6px;color:#2a1a00">342+ Google Reviews</div>
+        <div style="font-size:14px;color:#6b7280;margin-bottom:16px">Verified by real customers across Pune, Maharashtra</div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="page-faq" class="sf-page" style="display:none">
+  <div class="section">
+    <div class="sec-in">
+      <div class="sec-head c"><div class="sec-eyebrow">FAQ</div><h2>Frequently Asked Questions</h2><p class="sec-p">About our home builders services</p></div>
+      <div class="faq-wrap">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Are you available on weekends?<span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes! We operate Mon–Sat: 8AM–8PM, Sun: 9AM–5PM. For genuine emergencies, we are available 24/7 including holidays.</div>
+    </div>
+  
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Do you provide a service guarantee?<span class="faq-icon">+</span></div>
+      <div class="faq-a">Absolutely. All our home-builders services come with a 30-day workmanship guarantee. If you're not satisfied, we return and fix it at no cost.</div>
+    </div>
+  
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How quickly can you arrive?<span class="faq-icon">+</span></div>
+      <div class="faq-a">For standard bookings in Pune, Maharashtra, we confirm within 2 hours. For emergency calls, we typically arrive within 45–60 minutes.</div>
+    </div>
+  
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Are your professionals certified?<span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes, all our Home Builders professionals are fully certified, background-verified, and carry valid licenses. We only employ trained specialists.</div>
+    </div>
+  
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What areas do you serve?<span class="faq-icon">+</span></div>
+      <div class="faq-a">We serve all major areas across Pune, Maharashtra and surrounding regions. Contact us to confirm coverage in your specific location.</div>
+    </div>
+  
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How is pricing determined?<span class="faq-icon">+</span></div>
+      <div class="faq-a">We provide transparent, upfront quotes after a brief assessment. No hidden charges. Our pricing is competitive and we offer service packages for regular clients.</div>
+    </div>
+  </div>
+      <div style="text-align:center;margin-top:36px;padding:28px;background:#ffffff;border:1px solid #e5e7eb;border-radius:14px">
+        <h3 style="font-size:18px;font-weight:800;margin-bottom:8px">Still have questions?</h3>
+        <p style="color:#6b7280;margin-bottom:18px">Our team is happy to answer any questions about our services.</p>
+        <button class="btn-p" onclick="showPage('contact')">Contact Us</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="page-contact" class="sf-page" style="display:none">
+  <div class="section">
+    <div class="sec-in">
+      <div class="sec-head c"><div class="sec-eyebrow">Contact Us</div><h2>Book a Service</h2><p class="sec-p">We respond within 30 minutes during business hours</p></div>
+      <div class="ctc-g">
+        <div class="ctc-info">
+          <h2>Get in Touch</h2>
+          <p>Have questions or ready to book? Our team is standing by to help you get the best home-builders service in Pune, Maharashtra.</p>
+          <div class="ctc-row"><div class="ctc-ic">📞</div><div><div class="ctc-lbl">Phone</div><div class="ctc-val">+91 98765 43210</div></div></div>
+          <div class="ctc-row"><div class="ctc-ic">✉️</div><div><div class="ctc-lbl">Email</div><div class="ctc-val">contact@sharmaelectricals.in</div></div></div>
+          <div class="ctc-row"><div class="ctc-ic">📍</div><div><div class="ctc-lbl">Address</div><div class="ctc-val">Shop No. 12, MG Road, Shivajinagar, Pune - 411005</div></div></div>
+          <div class="ctc-row"><div class="ctc-ic">🕐</div><div><div class="ctc-lbl">Hours</div><div class="ctc-val">Mon–Sat: 8AM–8PM, Sun: 9AM–5PM</div></div></div>
+          <div class="ctc-row"><div class="ctc-ic">🚨</div><div><div class="ctc-lbl">Emergency</div><div class="ctc-val">24/7 Available</div></div></div>
+        </div>
+        <div class="ctc-form">
+          <div class="ctc-form-title">Request a Callback</div>
+          <div class="ff-row">
+            <div class="ff"><label>Your Name</label><input type="text" placeholder="Full name"></div>
+            <div class="ff"><label>Phone</label><input type="tel" placeholder="+91 98765 43210"></div>
+          </div>
+          <div class="ff-row">
+            <div class="ff"><label>Email</label><input type="email" placeholder="Email Address"></div>
+            <div class="ff"><label>Property Address</label><input type="text" placeholder="Street, City, Zip"></div>
+          </div>
+          <div class="ff"><label>Service Needed</label><select><option>Custom Home Building</option><option>Spec Home Construction</option><option>Semi-Custom Homes</option><option>Green Building</option><option>Luxury Home Construction</option><option>Floor Plan Design</option></select></div>
+          <div class="ff-row">
+            <div class="ff"><label>Property Size</label><input type="text" placeholder="e.g. 2000 sq ft"></div>
+            <div class="ff"><label>Preferred Date</label><input type="date"></div>
+          </div>
+          <div class="ff"><label>Service Add-ons</label><input type="text" placeholder="Any specific requests?"></div>
+          <div class="ff"><label>Message</label><textarea placeholder="Describe your requirement..."></textarea></div>
+          <button class="sub-btn" onclick="submitForm(this)">📞 Request Callback</button>
+          <div class="succ">✅ We'll call you back within 30 minutes!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="page-bookings" class="sf-page" style="display:none">
+  <div class="section">
+    <div class="sec-in">
+      <div class="sec-head c"><div class="sec-eyebrow">Bookings</div><h2>Schedule an Appointment</h2><p class="sec-p">Select a time that works for you.</p></div>
+      <div style="background:#ffffff; border:1px solid #e5e7eb; border-radius:16px; overflow:hidden; padding:20px;">
+        <!-- Calendly inline widget begin -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/ojasdenge-lx/30min?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <!-- Calendly inline widget end -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer><div class="foot-in">
+  <div class="foot-g">
+    <div class="foot-brand">
+      <div class="fl">Shreyash Ljdhgdsukhbdk</div>
+      <p>Your trusted home builders partner in Pune, Maharashtra. Professional, reliable, affordable.</p>
+      <div style="display:flex;gap:12px;margin-top:16px">
+        
+        
+        
+      </div>
+    </div>
+    <div class="foot-col"><h4>Services</h4><a onclick="showPage('portfolio')">Custom Home Building</a><a onclick="showPage('portfolio')">Spec Home Construction</a><a onclick="showPage('portfolio')">Semi-Custom Homes</a><a onclick="showPage('portfolio')">Green Building</a><a onclick="showPage('portfolio')">Luxury Home Construction</a></div>
+    <div class="foot-col"><h4>Company</h4><a onclick="showPage('about')">About Us</a><a onclick="showPage('portfolio')">Portfolio</a><a onclick="showPage('reviews')">Reviews</a><a onclick="showPage('faq')">FAQ</a><a onclick="showPage('contact')">Contact</a></div>
+    <div class="foot-col"><h4>Contact</h4><a>+91 98765 43210</a><a>contact@sharmaelectricals.in</a><a>Pune, Maharashtra</a></div>
+  </div>
+  <div class="foot-bot">
+    <span>© 2026 Shreyash Ljdhgdsukhbdk. All rights reserved.</span>
+    <span style="display:flex;gap:16px">
+      <a href="privacy-policy.html" style="color:inherit;text-decoration:none">Privacy</a>
+      <a href="terms-of-service.html" style="color:inherit;text-decoration:none">Terms</a>
+      <a href="cookie-policy.html" style="color:inherit;text-decoration:none">Cookies</a>
+    </span>
+  </div>
+</div></footer>
+
+<div class="mobile-bottom-nav">
+  <div class="mb-nav-item mb-active" data-page="home" onclick="showPage('home')">
+    <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    <span>Home</span>
+  </div>
+  <div class="mb-nav-item" data-page="services" onclick="showPage('services')">
+    <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+    <span>Services</span>
+  </div>
+  <div class="mb-center" onclick="showPage('home')">
+    <div class="mb-center-in">
+      <img src="https://images.pexels.com/photos/8961624/pexels-photo-8961624.jpeg" alt="Logo">
+    </div>
+  </div>
+  <div class="mb-nav-item" data-page="portfolio" onclick="showPage('portfolio')">
+    <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+    <span>Portfolio</span>
+  </div>
+  <div class="mb-nav-item" data-page="contact" onclick="showPage('contact')">
+    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    <span>Contact</span>
+  </div>
+</div>
+
+<a href="tel:+91 98765 43210" class="float-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:32px;height:32px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></a>
+
+<div id="srvModal" class="sf-modal" onclick="if(event.target===this) this.style.display='none'">
+  <div class="sf-modal-inner">
+    <button class="sf-modal-close" onclick="document.getElementById('srvModal').style.display='none'">✕</button>
+    <h2 id="srvModalTitle" style="margin-bottom:16px;font-size:24px">Service Details</h2>
+    <p id="srvModalDesc" style="color:#6b7280;line-height:1.6;margin-bottom:24px"></p>
+    <ul class="chk-list" style="margin-bottom:32px">
+      <li><span class="chk-icon">✓</span> Free estimates provided</li>
+      <li><span class="chk-icon">✓</span> Satisfaction guaranteed</li>
+      <li><span class="chk-icon">✓</span> Professional execution</li>
+    </ul>
+    <button class="btn-p" style="width:100%" onclick="document.getElementById('srvModal').style.display='none'; showPage('contact')">Get a Quote</button>
+  </div>
+</div>
+
+<script>
+  function openServiceModal(name, desc) {
+    document.getElementById('srvModalTitle').textContent = name;
+    document.getElementById('srvModalDesc').textContent = desc || 'Comprehensive ' + name.toLowerCase() + ' solutions tailored to your specific needs.';
+    document.getElementById('srvModal').style.display = 'flex';
+  }
+
+function showPage(id) {
+  document.querySelectorAll('.sf-page').forEach(p => p.style.display='none');
+  document.getElementById('page-'+id).style.display='block';
+  document.querySelectorAll('.sf-nav-link').forEach(l => l.classList.remove('active'));
+  const el = document.querySelector('[data-page="'+id+'"]');
+  if(el) el.classList.add('active');
+  window.scrollTo(0,0);
+  document.getElementById('mob-menu').style.display='none';
+  const o = document.getElementById('mob-menu-overlay');
+  if(o) o.style.display='none';
+}
+function toggleMob() {
+  const m = document.getElementById('mob-menu');
+  const o = document.getElementById('mob-menu-overlay');
+  const show = m.style.display==='flex';
+  m.style.display = show ? 'none' : 'flex';
+  if(o) o.style.display = show ? 'none' : 'block';
+}
+function submitForm(btn) {
+  btn.textContent = '✓ Request Sent!';
+  btn.style.opacity='0.7';
+  btn.nextElementSibling.style.display='block';
+}
+function toggleFaq(el) {
+  const ans = el.nextElementSibling;
+  ans.style.display = ans.style.display==='block' ? 'none' : 'block';
+  el.querySelector('.faq-icon').textContent = ans.style.display==='block' ? '−' : '+';
+}
+
+</script>
+</body></html>
