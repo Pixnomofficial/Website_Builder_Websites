@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Website Preview</title></head><body>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Website Preview</title></head><body>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -240,7 +241,7 @@ h1,h2,h3{letter-spacing:2px!important;font-weight:400!important}
     nav{border-bottom:1px solid rgba(212,175,55,0.2)!important}
     .hero-img img{filter:sepia(0.15) contrast(1.05)}
 </style>
-<div class="emg">24/7 Emergency HVAC / AC Service — Call: +1 (555) 234-5678</div>
+<div class="emg">24/7 Emergency Property Management — Call: +1 (555) 234-5678</div>
 <nav><div class="nav-inner">
   <div class="nav-logo">ProComfort HVAC</div>
   <div style="display:flex;gap:4px" class="nav-links-d">
@@ -255,10 +256,10 @@ h1,h2,h3{letter-spacing:2px!important;font-weight:400!important}
   <button class="nav-cta" onclick="showPage('bookings')">Book Now</button>
   <button class="ham" onclick="toggleMob()">☰</button>
 </div></nav>
-<div id="mob-menu-overlay" onclick="toggleMob()"></div>
-<div id="mob-menu">
+<div id="mob-menu-overlay" onclick="toggleMob()" style="display: none;"></div>
+<div id="mob-menu" style="display: none;">
   <button class="mob-close" onclick="toggleMob()">✕</button>
-  <span class="sf-nav-link active" data-page="home" onclick="showPage('home')">Home</span>
+  <span class="sf-nav-link" data-page="home" onclick="showPage('home')">Home</span>
   <span class="sf-nav-link" data-page="about" onclick="showPage('about')">About Us</span>
   <span class="sf-nav-link" data-page="services" onclick="showPage('services')">Services</span>
   <span class="sf-nav-link" data-page="portfolio" onclick="showPage('portfolio')">Portfolio</span>
@@ -267,20 +268,20 @@ h1,h2,h3{letter-spacing:2px!important;font-weight:400!important}
   <span class="sf-nav-link" data-page="contact" onclick="showPage('contact')">Contact</span>
 </div>
 
-<div id="page-home" class="sf-page">
+<div id="page-home" class="sf-page" style="display: block;">
   <div class="hero">
     <div class="hero-inner">
       <div>
         <div class="hero-badge">18+ Years · Dallas, TX</div>
-        <h1>Expert <em>HVAC / AC Service</em><br>You Can Trust</h1>
-        <p>Keeping Dallas Comfortable Year-Round — Fast, Reliable HVAC Service</p>
+        <h1>Expert <em>Property Management</em><br>You Can Trust</h1>
+        <p>Stress-Free Property Management — Maximizing Your Investment Returns</p>
         <div class="hero-btns">
           <button class="btn-p" onclick="showPage('bookings')">Book a Service</button>
           <button class="btn-s" onclick="showPage('portfolio')">View Our Work</button>
         </div>
       </div>
       <div class="hero-visual">
-        <div class="hero-img"><img src="https://images.pexels.com/photos/30210086/pexels-photo-30210086.jpeg" alt="HVAC / AC Service" loading="lazy"></div>
+        <div class="hero-img"><img src="https://images.pexels.com/photos/8732777/pexels-photo-8732777.jpeg" alt="Property Management" loading="lazy" style=""></div>
         <div class="hero-stat-badge">
           <div><div class="sb-val">4.9★</div><div class="sb-lbl">Rating</div></div>
           <div style="width:1px;height:32px;background:rgba(255,255,255,0.1)"></div>
@@ -299,42 +300,42 @@ h1,h2,h3{letter-spacing:2px!important;font-weight:400!important}
   </div>
   <div class="section">
     <div class="sec-in">
-      <div class="sec-head c"><div class="sec-eyebrow">Services</div><h2>What We Do</h2><p class="sec-p">Professional hvac / ac service solutions for homes &amp; businesses in Dallas, TX</p></div>
+      <div class="sec-head c"><div class="sec-eyebrow">Services</div><h2>What We Do</h2><p class="sec-p">Professional property management solutions for homes &amp; businesses in Dallas, TX</p></div>
       <div class="srv-grid">
-    <div class="srv-card" onclick="openServiceModal('AC Installation', 'Professional ac installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
-      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
-      <h3>AC Installation</h3>
-      <p>Professional ac installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
-    </div>
-  
-    <div class="srv-card" onclick="openServiceModal('AC Repair & Tune-Up', 'Professional ac repair & tune-up services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
-      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
-      <h3>AC Repair & Tune-Up</h3>
-      <p>Professional ac repair & tune-up services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
-    </div>
-  
-    <div class="srv-card" onclick="openServiceModal('Heating System Repair', 'Professional heating system repair services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
-      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
-      <h3>Heating System Repair</h3>
-      <p>Professional heating system repair services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
-    </div>
-  
-    <div class="srv-card" onclick="openServiceModal('Furnace Installation', 'Professional furnace installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
-      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
-      <h3>Furnace Installation</h3>
-      <p>Professional furnace installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
-    </div>
-  
-    <div class="srv-card" onclick="openServiceModal('Duct Cleaning', 'Professional duct cleaning services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+    <div class="srv-card" onclick="openServiceModal('Tenant Screening', 'Professional tenant screening services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
       <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-      <h3>Duct Cleaning</h3>
-      <p>Professional duct cleaning services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+      <h3>Tenant Screening</h3>
+      <p>Professional tenant screening services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
     </div>
   
-    <div class="srv-card" onclick="openServiceModal('Air Quality Testing', 'Professional air quality testing services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+    <div class="srv-card" onclick="openServiceModal('Rent Collection', 'Professional rent collection services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
       <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-      <h3>Air Quality Testing</h3>
-      <p>Professional air quality testing services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+      <h3>Rent Collection</h3>
+      <p>Professional rent collection services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Property Inspections', 'Professional property inspections services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Property Inspections</h3>
+      <p>Professional property inspections services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Maintenance Coordination', 'Professional maintenance coordination services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Maintenance Coordination</h3>
+      <p>Professional maintenance coordination services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Lease Management', 'Professional lease management services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Lease Management</h3>
+      <p>Professional lease management services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Eviction Services', 'Professional eviction services services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Eviction Services</h3>
+      <p>Professional eviction services services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
     </div>
   </div>
     </div>
@@ -345,28 +346,28 @@ h1,h2,h3{letter-spacing:2px!important;font-weight:400!important}
       <div class="rev-g">
     <div class="rev-card">
       <div class="rev-stars">★★★★★</div>
-      <p class="rev-text">"ProComfort had my AC running perfectly within 2 hours. The tech was knowledgeable, clean, and explained everything clearly. Best HVAC company I've used."</p>
+      <p class="rev-text">"My rental income is up 15% since switching to their management. Tenant screening is thorough and maintenance response is excellent."</p>
       <div class="rev-author">
-        <div class="rev-avatar">J</div>
-        <div><div class="rev-name">James Carter</div><div class="rev-date">1 week ago</div></div>
+        <div class="rev-avatar">H</div>
+        <div><div class="rev-name">Henry Lewis</div><div class="rev-date">1 week ago</div></div>
       </div>
     </div>
   
     <div class="rev-card">
       <div class="rev-stars">★★★★★</div>
-      <p class="rev-text">"Our furnace went out on the coldest night of the year. They were at our door in 45 minutes. Truly a lifesaver — highly recommend for emergency service."</p>
+      <p class="rev-text">"They handled a difficult eviction professionally and legally. Communication throughout the process was outstanding."</p>
       <div class="rev-author">
-        <div class="rev-avatar">L</div>
-        <div><div class="rev-name">Linda Hoffman</div><div class="rev-date">2 weeks ago</div></div>
+        <div class="rev-avatar">C</div>
+        <div><div class="rev-name">Christine Young</div><div class="rev-date">3 weeks ago</div></div>
       </div>
     </div>
   
     <div class="rev-card">
       <div class="rev-stars">★★★★★</div>
-      <p class="rev-text">"Annual maintenance plan is totally worth it. They catch small issues before they become expensive repairs. Very professional crew."</p>
+      <p class="rev-text">"Owner portal gives real-time financial reporting. I know exactly what's happening with my properties at all times. Very impressive."</p>
       <div class="rev-author">
-        <div class="rev-avatar">M</div>
-        <div><div class="rev-name">Marcus Webb</div><div class="rev-date">1 month ago</div></div>
+        <div class="rev-avatar">F</div>
+        <div><div class="rev-name">Frank Davis</div><div class="rev-date">1 month ago</div></div>
       </div>
     </div>
   </div>
@@ -381,7 +382,7 @@ h1,h2,h3{letter-spacing:2px!important;font-weight:400!important}
     </div>
   </div>
   <div class="cta-band">
-    <h2>Ready to Book a HVAC / AC Service?</h2>
+    <h2>Ready to Book a Property Management?</h2>
     <p>Emergency response within 60 minutes. Serving Dallas, TX 24/7.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
       <button class="btn-inv" onclick="showPage('bookings')">Book Now</button>
@@ -390,61 +391,61 @@ h1,h2,h3{letter-spacing:2px!important;font-weight:400!important}
   </div>
 </div>
 
-<div id="page-services" class="sf-page" style="display:none">
+<div id="page-services" class="sf-page" style="display: none;">
   <div class="section">
     <div class="sec-in">
       <div class="sec-head c"><div class="sec-eyebrow">All Services</div><h2>Comprehensive Home Solutions</h2><p class="sec-p">Professional services tailored to your needs in Dallas, TX</p></div>
       <div class="srv-grid">
-    <div class="srv-card" onclick="openServiceModal('AC Installation', 'Professional ac installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
-      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
-      <h3>AC Installation</h3>
-      <p>Professional ac installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
-    </div>
-  
-    <div class="srv-card" onclick="openServiceModal('AC Repair & Tune-Up', 'Professional ac repair & tune-up services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
-      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
-      <h3>AC Repair & Tune-Up</h3>
-      <p>Professional ac repair & tune-up services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
-    </div>
-  
-    <div class="srv-card" onclick="openServiceModal('Heating System Repair', 'Professional heating system repair services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
-      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
-      <h3>Heating System Repair</h3>
-      <p>Professional heating system repair services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
-    </div>
-  
-    <div class="srv-card" onclick="openServiceModal('Furnace Installation', 'Professional furnace installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
-      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
-      <h3>Furnace Installation</h3>
-      <p>Professional furnace installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
-    </div>
-  
-    <div class="srv-card" onclick="openServiceModal('Duct Cleaning', 'Professional duct cleaning services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+    <div class="srv-card" onclick="openServiceModal('Tenant Screening', 'Professional tenant screening services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
       <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-      <h3>Duct Cleaning</h3>
-      <p>Professional duct cleaning services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+      <h3>Tenant Screening</h3>
+      <p>Professional tenant screening services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
     </div>
   
-    <div class="srv-card" onclick="openServiceModal('Air Quality Testing', 'Professional air quality testing services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+    <div class="srv-card" onclick="openServiceModal('Rent Collection', 'Professional rent collection services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
       <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-      <h3>Air Quality Testing</h3>
-      <p>Professional air quality testing services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+      <h3>Rent Collection</h3>
+      <p>Professional rent collection services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Property Inspections', 'Professional property inspections services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Property Inspections</h3>
+      <p>Professional property inspections services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Maintenance Coordination', 'Professional maintenance coordination services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Maintenance Coordination</h3>
+      <p>Professional maintenance coordination services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Lease Management', 'Professional lease management services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Lease Management</h3>
+      <p>Professional lease management services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Eviction Services', 'Professional eviction services services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Eviction Services</h3>
+      <p>Professional eviction services services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
     </div>
   </div>
     </div>
   </div>
 </div>
 
-<div id="page-about" class="sf-page" style="display:none">
+<div id="page-about" class="sf-page" style="display: none;">
   <div class="section">
     <div class="sec-in">
       <div class="about-g">
-        <div class="about-img"><img src="https://plus.unsplash.com/premium_photo-1661963078581-a4f091315692?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8SGVhdGluZyUyMCUyNiUyMEZ1cm5hY2UlMjBpbiUyMEhWQUN8ZW58MHx8MHx8fDA%3D" alt="About" loading="lazy"></div>
+        <div class="about-img"><img src="https://images.pexels.com/photos/7937734/pexels-photo-7937734.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;h=600&amp;fit=crop" alt="About" loading="lazy" style=""></div>
         <div class="about-text">
           <div class="sec-eyebrow">About ProComfort HVAC</div>
-          <h2>Trusted HVAC / AC Service Specialists Since 2008</h2>
-          <p>With over <strong>18 years</strong> serving Dallas, TX, ProComfort HVAC has earned a reputation for reliable, professional hvac services. Our team of 24 certified specialists brings expertise and dedication to every job.</p>
-          <p>We started as a small local operation and have grown into Dallas, TX's most trusted hvac / ac service service — with 4800+ completed projects and 512+ satisfied customers to show for it.</p>
+          <h2>Trusted Property Management Specialists Since 2008</h2>
+          <p>With over <strong>18 years</strong> serving Dallas, TX, ProComfort HVAC has earned a reputation for reliable, professional property-management services. Our team of 24 certified specialists brings expertise and dedication to every job.</p>
+          <p>We started as a small local operation and have grown into Dallas, TX's most trusted property management service — with 4800+ completed projects and 512+ satisfied customers to show for it.</p>
           <ul class="chk-list">
             <li><span class="chk-icon">✓</span>Licensed &amp; fully insured professionals</li>
             <li><span class="chk-icon">✓</span>No hidden fees — transparent pricing</li>
@@ -464,128 +465,128 @@ h1,h2,h3{letter-spacing:2px!important;font-weight:400!important}
   </div>
 </div>
 
-<div id="page-portfolio" class="sf-page" style="display:none">
+<div id="page-portfolio" class="sf-page" style="display: none;">
   <div class="section">
     <div class="sec-in">
       <div class="sec-head c"><div class="sec-eyebrow">Portfolio</div><h2>Recent Projects</h2><p class="sec-p">4800+ completed projects in Dallas, TX</p></div>
       <div class="port-g">
     <div class="port-card">
-      <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=800&q=80" alt="Hvac Project — Residential" loading="lazy">
-      <div class="port-info"><h3>Hvac Project — Residential</h3><span>2024 · Dallas, TX</span></div>
+      <img src="https://images.pexels.com/photos/29899813/pexels-photo-29899813.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;h=600&amp;fit=crop" alt="Property-management Project — Residential" loading="lazy" style="">
+      <div class="port-info"><h3>Property-management Project — Residential</h3><span>2024 · Dallas, TX</span></div>
     </div>
   
     <div class="port-card">
-      <img src="https://www.modernhvac.com/wp-content/uploads/2023/10/Furnace-service2-683x1024.jpg" alt="Commercial AC Installation Installation" loading="lazy">
-      <div class="port-info"><h3>Commercial AC Installation Installation</h3><span>2023 · Dallas, TX</span></div>
+      <img src="https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Commercial Tenant Screening Installation" loading="lazy" style="">
+      <div class="port-info"><h3>Commercial Tenant Screening Installation</h3><span>2023 · Dallas, TX</span></div>
     </div>
   
     <div class="port-card">
-      <img src="https://images.unsplash.com/photo-1665826254140-28fa3d8738a1?auto=format&fit=crop&w=800&q=80" alt="Emergency hvac Work" loading="lazy">
-      <div class="port-info"><h3>Emergency hvac Work</h3><span>2022 · Dallas, TX</span></div>
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Emergency property-management Work" loading="lazy" style="">
+      <div class="port-info"><h3>Emergency property-management Work</h3><span>2022 · Dallas, TX</span></div>
     </div>
   
     <div class="port-card">
-      <img src="https://media.istockphoto.com/id/1284843352/photo/the-technicians-are-cleaning-the-air-conditioner-by-spraying-water-hand-and-water-spray-are.webp?a=1&b=1&s=612x612&w=0&k=20&c=sJyiPhLk0LJdpvJAsswYqeOSwZWypX2qztfCc-XvREk=" alt="Premium AC Repair & Tune-Up Setup" loading="lazy">
-      <div class="port-info"><h3>Premium AC Repair & Tune-Up Setup</h3><span>2021 · Dallas, TX</span></div>
+      <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Premium Rent Collection Setup" loading="lazy" style="">
+      <div class="port-info"><h3>Premium Rent Collection Setup</h3><span>2021 · Dallas, TX</span></div>
     </div>
   </div>
       <div style="margin-top:56px"><div class="sec-head c"><div class="sec-eyebrow">All Services</div><h2>Our Full Service Range</h2></div><div class="srv-grid">
-    <div class="srv-card" onclick="openServiceModal('AC Installation', 'Professional ac installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
-      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
-      <h3>AC Installation</h3>
-      <p>Professional ac installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
-    </div>
-  
-    <div class="srv-card" onclick="openServiceModal('AC Repair & Tune-Up', 'Professional ac repair & tune-up services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
-      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
-      <h3>AC Repair & Tune-Up</h3>
-      <p>Professional ac repair & tune-up services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
-    </div>
-  
-    <div class="srv-card" onclick="openServiceModal('Heating System Repair', 'Professional heating system repair services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
-      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
-      <h3>Heating System Repair</h3>
-      <p>Professional heating system repair services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
-    </div>
-  
-    <div class="srv-card" onclick="openServiceModal('Furnace Installation', 'Professional furnace installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
-      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
-      <h3>Furnace Installation</h3>
-      <p>Professional furnace installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
-    </div>
-  
-    <div class="srv-card" onclick="openServiceModal('Duct Cleaning', 'Professional duct cleaning services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+    <div class="srv-card" onclick="openServiceModal('Tenant Screening', 'Professional tenant screening services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
       <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-      <h3>Duct Cleaning</h3>
-      <p>Professional duct cleaning services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+      <h3>Tenant Screening</h3>
+      <p>Professional tenant screening services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
     </div>
   
-    <div class="srv-card" onclick="openServiceModal('Air Quality Testing', 'Professional air quality testing services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+    <div class="srv-card" onclick="openServiceModal('Rent Collection', 'Professional rent collection services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
       <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-      <h3>Air Quality Testing</h3>
-      <p>Professional air quality testing services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+      <h3>Rent Collection</h3>
+      <p>Professional rent collection services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Property Inspections', 'Professional property inspections services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Property Inspections</h3>
+      <p>Professional property inspections services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Maintenance Coordination', 'Professional maintenance coordination services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Maintenance Coordination</h3>
+      <p>Professional maintenance coordination services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Lease Management', 'Professional lease management services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Lease Management</h3>
+      <p>Professional lease management services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
+    </div>
+  
+    <div class="srv-card" onclick="openServiceModal('Eviction Services', 'Professional eviction services services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer">
+      <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Eviction Services</h3>
+      <p>Professional eviction services services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p>
     </div>
   </div></div>
     </div>
   </div>
 </div>
 
-<div id="page-reviews" class="sf-page" style="display:none">
+<div id="page-reviews" class="sf-page" style="display: none;">
   <div class="section">
     <div class="sec-in">
       <div class="sec-head c"><div class="sec-eyebrow">Reviews</div><h2>What Our Clients Say</h2><p class="sec-p">4.9★ from 512+ reviews</p></div>
       <div class="rev-g">
     <div class="rev-card">
       <div class="rev-stars">★★★★★</div>
-      <p class="rev-text">"ProComfort had my AC running perfectly within 2 hours. The tech was knowledgeable, clean, and explained everything clearly. Best HVAC company I've used."</p>
+      <p class="rev-text">"My rental income is up 15% since switching to their management. Tenant screening is thorough and maintenance response is excellent."</p>
       <div class="rev-author">
-        <div class="rev-avatar">J</div>
-        <div><div class="rev-name">James Carter</div><div class="rev-date">1 week ago</div></div>
+        <div class="rev-avatar">H</div>
+        <div><div class="rev-name">Henry Lewis</div><div class="rev-date">1 week ago</div></div>
       </div>
     </div>
   
     <div class="rev-card">
       <div class="rev-stars">★★★★★</div>
-      <p class="rev-text">"Our furnace went out on the coldest night of the year. They were at our door in 45 minutes. Truly a lifesaver — highly recommend for emergency service."</p>
+      <p class="rev-text">"They handled a difficult eviction professionally and legally. Communication throughout the process was outstanding."</p>
       <div class="rev-author">
-        <div class="rev-avatar">L</div>
-        <div><div class="rev-name">Linda Hoffman</div><div class="rev-date">2 weeks ago</div></div>
+        <div class="rev-avatar">C</div>
+        <div><div class="rev-name">Christine Young</div><div class="rev-date">3 weeks ago</div></div>
       </div>
     </div>
   
     <div class="rev-card">
       <div class="rev-stars">★★★★★</div>
-      <p class="rev-text">"Annual maintenance plan is totally worth it. They catch small issues before they become expensive repairs. Very professional crew."</p>
+      <p class="rev-text">"Owner portal gives real-time financial reporting. I know exactly what's happening with my properties at all times. Very impressive."</p>
       <div class="rev-author">
-        <div class="rev-avatar">M</div>
-        <div><div class="rev-name">Marcus Webb</div><div class="rev-date">1 month ago</div></div>
+        <div class="rev-avatar">F</div>
+        <div><div class="rev-name">Frank Davis</div><div class="rev-date">1 month ago</div></div>
       </div>
     </div>
   
     <div class="rev-card">
       <div class="rev-stars">★★★★☆</div>
-      <p class="rev-text">"Great experience from scheduling to completion. The duct cleaning made a noticeable difference in our air quality. Will definitely use again."</p>
+      <p class="rev-text">"Switched from self-managing 5 units — best decision I ever made. Vacancy rates dropped and quality of tenants improved dramatically."</p>
+      <div class="rev-author">
+        <div class="rev-avatar">J</div>
+        <div><div class="rev-name">Judith Wilson</div><div class="rev-date">5 weeks ago</div></div>
+      </div>
+    </div>
+  
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"They treat our properties like their own. Maintenance coordination is seamless and their contractor network gets things done fast."</p>
       <div class="rev-author">
         <div class="rev-avatar">A</div>
-        <div><div class="rev-name">Angela Torres</div><div class="rev-date">1 month ago</div></div>
+        <div><div class="rev-name">Alan Moore</div><div class="rev-date">2 months ago</div></div>
       </div>
     </div>
   
     <div class="rev-card">
       <div class="rev-stars">★★★★★</div>
-      <p class="rev-text">"Installed a new heat pump system — they did a fantastic job. Clean install, explained the thermostat settings, and followed up the next day."</p>
+      <p class="rev-text">"Transparent fees, excellent communication, and they actually understand local rental market dynamics. Truly a partner, not just a vendor."</p>
       <div class="rev-author">
-        <div class="rev-avatar">S</div>
-        <div><div class="rev-name">Steve Nguyen</div><div class="rev-date">2 months ago</div></div>
-      </div>
-    </div>
-  
-    <div class="rev-card">
-      <div class="rev-stars">★★★★★</div>
-      <p class="rev-text">"Fair pricing, no hidden fees, and the technician was extremely thorough. This is the only HVAC company I trust with my home."</p>
-      <div class="rev-author">
-        <div class="rev-avatar">D</div>
-        <div><div class="rev-name">Donna Price</div><div class="rev-date">2 months ago</div></div>
+        <div class="rev-avatar">C</div>
+        <div><div class="rev-name">Cynthia Hall</div><div class="rev-date">2 months ago</div></div>
       </div>
     </div>
   </div>
@@ -600,10 +601,10 @@ h1,h2,h3{letter-spacing:2px!important;font-weight:400!important}
   </div>
 </div>
 
-<div id="page-faq" class="sf-page" style="display:none">
+<div id="page-faq" class="sf-page" style="display: none;">
   <div class="section">
     <div class="sec-in">
-      <div class="sec-head c"><div class="sec-eyebrow">FAQ</div><h2>Frequently Asked Questions</h2><p class="sec-p">About our hvac / ac service services</p></div>
+      <div class="sec-head c"><div class="sec-eyebrow">FAQ</div><h2>Frequently Asked Questions</h2><p class="sec-p">About our property management services</p></div>
       <div class="faq-wrap">
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">Are you available on weekends?<span class="faq-icon">+</span></div>
@@ -612,7 +613,7 @@ h1,h2,h3{letter-spacing:2px!important;font-weight:400!important}
   
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">Do you provide a service guarantee?<span class="faq-icon">+</span></div>
-      <div class="faq-a">Absolutely. All our hvac services come with a 30-day workmanship guarantee. If you're not satisfied, we return and fix it at no cost.</div>
+      <div class="faq-a">Absolutely. All our property-management services come with a 30-day workmanship guarantee. If you're not satisfied, we return and fix it at no cost.</div>
     </div>
   
     <div class="faq-item">
@@ -622,7 +623,7 @@ h1,h2,h3{letter-spacing:2px!important;font-weight:400!important}
   
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">Are your professionals certified?<span class="faq-icon">+</span></div>
-      <div class="faq-a">Yes, all our HVAC / AC Service professionals are fully certified, background-verified, and carry valid licenses. We only employ trained specialists.</div>
+      <div class="faq-a">Yes, all our Property Management professionals are fully certified, background-verified, and carry valid licenses. We only employ trained specialists.</div>
     </div>
   
     <div class="faq-item">
@@ -651,7 +652,7 @@ h1,h2,h3{letter-spacing:2px!important;font-weight:400!important}
       <div class="ctc-g">
         <div class="ctc-info">
           <h2>Get in Touch</h2>
-          <p>Have questions or ready to book? Our team is standing by to help you get the best hvac service in Dallas, TX.</p>
+          <p>Have questions or ready to book? Our team is standing by to help you get the best property-management service in Dallas, TX.</p>
           <div class="ctc-row"><div class="ctc-ic">📞</div><div><div class="ctc-lbl">Phone</div><div class="ctc-val">+1 (555) 234-5678</div></div></div>
           <div class="ctc-row"><div class="ctc-ic">✉️</div><div><div class="ctc-lbl">Email</div><div class="ctc-val">service@procomforthvac.com</div></div></div>
           <div class="ctc-row"><div class="ctc-ic">📍</div><div><div class="ctc-lbl">Address</div><div class="ctc-val">450 Commerce St, Suite 200, Dallas, TX 75202</div></div></div>
@@ -668,7 +669,7 @@ h1,h2,h3{letter-spacing:2px!important;font-weight:400!important}
             <div class="ff"><label>Email</label><input type="email" placeholder="Email Address"></div>
             <div class="ff"><label>Property Address</label><input type="text" placeholder="Street, City, Zip"></div>
           </div>
-          <div class="ff"><label>Service Needed</label><select><option>AC Installation</option><option>AC Repair & Tune-Up</option><option>Heating System Repair</option><option>Furnace Installation</option><option>Duct Cleaning</option><option>Air Quality Testing</option></select></div>
+          <div class="ff"><label>Service Needed</label><select><option>Tenant Screening</option><option>Rent Collection</option><option>Property Inspections</option><option>Maintenance Coordination</option><option>Lease Management</option><option>Eviction Services</option></select></div>
           <div class="ff-row">
             <div class="ff"><label>Property Size</label><input type="text" placeholder="e.g. 2000 sq ft"></div>
             <div class="ff"><label>Preferred Date</label><input type="date"></div>
@@ -689,8 +690,8 @@ h1,h2,h3{letter-spacing:2px!important;font-weight:400!important}
       <div class="sec-head c"><div class="sec-eyebrow">Bookings</div><h2>Schedule an Appointment</h2><p class="sec-p">Select a time that works for you.</p></div>
       <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:16px; overflow:hidden; padding:20px;">
         <!-- Calendly inline widget begin -->
-        <div class="calendly-inline-widget" data-url="https://calendly.com/ojasdenge-lx/30min?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
-        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/ojasdenge-lx/30min?hide_event_type_details=1&amp;hide_gdpr_banner=1" style="position: relative;min-width:320px;height:700px;" data-processed="true"><div class="calendly-spinner"><div class="calendly-bounce1"></div><div class="calendly-bounce2"></div><div class="calendly-bounce3"></div></div><iframe src="https://calendly.com/ojasdenge-lx/30min?embed_domain=&amp;embed_type=Inline&amp;hide_event_type_details=1&amp;hide_gdpr_banner=1" width="100%" height="100%" frameborder="0" title="Select a Date &amp; Time - Calendly"></iframe></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async=""></script>
         <!-- Calendly inline widget end -->
       </div>
     </div>
@@ -701,14 +702,14 @@ h1,h2,h3{letter-spacing:2px!important;font-weight:400!important}
   <div class="foot-g">
     <div class="foot-brand">
       <div class="fl">ProComfort HVAC</div>
-      <p>Your trusted hvac / ac service partner in Dallas, TX. Professional, reliable, affordable.</p>
+      <p>Your trusted property management partner in Dallas, TX. Professional, reliable, affordable.</p>
       <div style="display:flex;gap:12px;margin-top:16px">
         <a href="https://facebook.com/demo" target="_blank" style="font-size:24px;text-decoration:none">📱</a>
         <a href="https://instagram.com/demo" target="_blank" style="font-size:24px;text-decoration:none">📸</a>
         <a href="https://g.page/r/demo" target="_blank" style="font-size:24px;text-decoration:none">⭐</a>
       </div>
     </div>
-    <div class="foot-col"><h4>Services</h4><a onclick="showPage('portfolio')">AC Installation</a><a onclick="showPage('portfolio')">AC Repair & Tune-Up</a><a onclick="showPage('portfolio')">Heating System Repair</a><a onclick="showPage('portfolio')">Furnace Installation</a><a onclick="showPage('portfolio')">Duct Cleaning</a></div>
+    <div class="foot-col"><h4>Services</h4><a onclick="showPage('portfolio')">Tenant Screening</a><a onclick="showPage('portfolio')">Rent Collection</a><a onclick="showPage('portfolio')">Property Inspections</a><a onclick="showPage('portfolio')">Maintenance Coordination</a><a onclick="showPage('portfolio')">Lease Management</a></div>
     <div class="foot-col"><h4>Company</h4><a onclick="showPage('about')">About Us</a><a onclick="showPage('portfolio')">Portfolio</a><a onclick="showPage('reviews')">Reviews</a><a onclick="showPage('faq')">FAQ</a><a onclick="showPage('contact')">Contact</a></div>
     <div class="foot-col"><h4>Contact</h4><a>+1 (555) 234-5678</a><a>service@procomforthvac.com</a><a>Dallas, TX</a></div>
   </div>
@@ -724,24 +725,24 @@ h1,h2,h3{letter-spacing:2px!important;font-weight:400!important}
 
 <div class="mobile-bottom-nav">
   <div class="mb-nav-item mb-active" data-page="home" onclick="showPage('home')">
-    <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
     <span>Home</span>
   </div>
   <div class="mb-nav-item" data-page="services" onclick="showPage('services')">
-    <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"></path></svg>
     <span>Services</span>
   </div>
   <div class="mb-center" onclick="showPage('home')">
     <div class="mb-center-in">
-      <img src="https://images.pexels.com/photos/30210086/pexels-photo-30210086.jpeg" alt="Logo">
+      <img src="https://images.pexels.com/photos/8732777/pexels-photo-8732777.jpeg" alt="Logo" style="">
     </div>
   </div>
   <div class="mb-nav-item" data-page="portfolio" onclick="showPage('portfolio')">
-    <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"></path></svg>
     <span>Portfolio</span>
   </div>
   <div class="mb-nav-item" data-page="contact" onclick="showPage('contact')">
-    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
     <span>Contact</span>
   </div>
 </div>
