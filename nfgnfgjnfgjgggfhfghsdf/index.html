@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Website Preview</title></head><body>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:#fff;color:#111;line-height:1.6}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #e5e7eb;padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;height:68px;gap:32px}
+.nav-logo{font-size:20px;font-weight:900;color:#0070f3;flex:1;letter-spacing:-0.5px}
+.emergency-bar{background:#111;color:#fff;display:flex;align-items:center;justify-content:center;gap:12px;padding:12px;font-size:13px;font-weight:500;letter-spacing:0.3px}
+@keyframes emgPulse { 0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); } 70% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); } 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } }
+.emg-dot { width: 8px; height: 8px; background: #ef4444; border-radius: 50%; animation: emgPulse 2s infinite; }
+.emg-link { color: #fff; text-decoration: none; font-weight: 700; transition: color 0.2s; }
+.emg-link:hover { color: #0070f3; }
+.nav-links{display:flex;gap:8px}
+.sf-nav-link{font-size:14px;color:#555;text-decoration:none;padding:6px 12px;border-radius:6px;cursor:pointer;transition:all .2s;font-weight:500}
+.sf-nav-link:hover,.sf-nav-link.active{background:#0070f315;color:#0070f3}
+.nav-cta{background:#0070f3;color:#fff;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .2s}
+.nav-cta:hover{background:#0070f3dd;transform:translateY(-1px)}
+.ham{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:#111}
+#mob-menu{display:none;flex-direction:column;gap:16px;padding:80px 24px 24px;background:#fff;position:fixed;top:0;right:0;width:280px;height:100vh;z-index:2000;box-shadow:-4px 0 24px rgba(0,0,0,0.15);animation:slideIn 0.3s forwards}
+@keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.mob-close{position:absolute;top:20px;right:20px;background:none;border:none;font-size:28px;color:#111;cursor:pointer}
+#mob-menu .sf-nav-link{display:block;padding:10px 0;font-size:16px}
+@media(max-width:768px){.nav-links{display:none}.ham{display:block}}
+
+/* HOME */
+.hero{padding:96px 5%;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1200px;margin:0 auto}
+@media(max-width:768px){.hero{grid-template-columns:1fr;padding:48px 5%}}
+.hero-eyebrow{display:inline-block;background:#0070f312;color:#0070f3;font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}
+.hero h1{font-size:clamp(36px,4.5vw,58px);font-weight:900;line-height:1.05;letter-spacing:-2px;color:#111;margin-bottom:18px}
+.hero h1 em{color:#0070f3;font-style:normal}
+.hero-sub{font-size:17px;color:#6b7280;line-height:1.75;margin-bottom:32px;max-width:480px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:#0070f3;color:#fff;padding:13px 28px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;border:none;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px #0070f340}
+.btn-secondary{background:#fff;border:2px solid #e5e7eb;color:#111;padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;text-decoration:none}
+.btn-secondary:hover{border-color:#0070f3;color:#0070f3}
+.hero-img{border-radius:20px;overflow:hidden;aspect-ratio:4/3;position:relative}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img-badge{position:absolute;bottom:20px;left:20px;background:#fff;border-radius:12px;padding:12px 16px;box-shadow:0 8px 32px rgba(0,0,0,0.12);display:flex;align-items:center;gap:10px}
+.badge-val{font-size:22px;font-weight:900;color:#0070f3}
+.badge-txt{font-size:11px;color:#6b7280;font-weight:600}
+.stats-strip{background:#f9fafb;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;padding:28px 5%}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center}
+@media(max-width:640px){.stats-inner{grid-template-columns:repeat(2,1fr)}}
+.stat-val{font-size:32px;font-weight:900;color:#0070f3;display:block}
+.stat-lbl{font-size:13px;color:#6b7280;font-weight:500}
+
+/* SECTIONS */
+.section{padding:80px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.alt-bg{background:#f9fafb}
+.section-header{text-align:center;margin-bottom:56px}
+.eyebrow{display:inline-block;background:#0070f312;color:#0070f3;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.section-header h2{font-size:clamp(28px,3.5vw,42px);font-weight:900;letter-spacing:-1px;color:#111;margin-bottom:12px}
+.section-header p{font-size:16px;color:#6b7280;max-width:520px;margin:0 auto;line-height:1.7}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.about-img{border-radius:20px;overflow:hidden;aspect-ratio:4/3}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-text h2{font-size:clamp(26px,3vw,38px);font-weight:900;letter-spacing:-1px;margin-bottom:16px}
+.about-text p{color:#6b7280;line-height:1.8;margin-bottom:14px;font-size:15px}
+.check-list{list-style:none;margin-top:20px}
+.check-list li{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #e5e7eb;font-size:14px;color:#333;font-weight:500}
+.check-list li::before{content:'✓';width:22px;height:22px;background:#0070f3;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;flex-shrink:0}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.service-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:28px;transition:all .3s;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:#0070f3;transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.service-card:hover{border-color:#0070f350;box-shadow:0 12px 48px #0070f315;transform:translateY(-4px)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{color:#0070f3;margin-bottom:16px}
+.service-card h3{font-size:16px;font-weight:800;margin-bottom:8px;color:#111}
+.service-card p{font-size:13px;color:#6b7280;line-height:1.65}
+
+/* PORTFOLIO */
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.portfolio-card{border-radius:16px;overflow:hidden;position:relative;aspect-ratio:4/3;cursor:pointer;transition:transform .3s}
+.portfolio-card:hover{transform:scale(1.02)}
+.portfolio-card img{width:100%;height:100%;object-fit:cover}
+.portfolio-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
+.portfolio-overlay h3{color:#fff;font-size:15px;font-weight:700}
+.portfolio-overlay span{color:rgba(255,255,255,0.7);font-size:12px}
+
+/* REVIEWS */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.review-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:24px;transition:all .3s}
+.review-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.08);transform:translateY(-2px)}
+.review-stars{color:#f59e0b;font-size:14px;margin-bottom:12px}
+.review-text{font-size:14px;color:#444;line-height:1.7;margin-bottom:18px;font-style:italic}
+.review-author{display:flex;align-items:center;gap:10px}
+.review-avatar{width:40px;height:40px;border-radius:50%;background:#0070f3;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0}
+.review-name{font-weight:700;font-size:14px;color:#111}
+.review-date{font-size:12px;color:#6b7280}
+
+/* FAQ */
+.faq-list{max-width:720px;margin:0 auto}
+.faq-item{border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;margin-bottom:12px}
+.faq-q{padding:18px 22px;cursor:pointer;font-weight:700;font-size:15px;color:#111;display:flex;justify-content:space-between;align-items:center;background:#fff;transition:background .2s;user-select:none}
+.faq-q:hover{background:#0070f306}
+.faq-icon{color:#0070f3;font-size:20px;font-weight:400;flex-shrink:0}
+.faq-a{display:none;padding:16px 22px 20px;font-size:14px;color:#6b7280;line-height:1.75;background:#f9fafb;border-top:1px solid #e5e7eb}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:48px;align-items:start}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+.contact-info h2{font-size:clamp(26px,3vw,36px);font-weight:900;letter-spacing:-1px;margin-bottom:16px}
+.contact-info p{color:#6b7280;line-height:1.8;margin-bottom:28px;font-size:15px}
+.contact-detail{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid #e5e7eb}
+.contact-detail:first-of-type{border-top:1px solid #e5e7eb}
+.c-icon{width:44px;height:44px;background:#0070f312;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.c-label{font-size:12px;color:#6b7280;font-weight:600}
+.c-val{font-size:14px;font-weight:700;color:#111}
+.contact-form{background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:32px;box-shadow:0 4px 40px rgba(0,0,0,0.06)}
+.form-field{margin-bottom:18px}
+.form-field label{display:block;font-size:12px;color:#6b7280;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.form-field input,.form-field select,.form-field textarea{width:100%;padding:12px 16px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:14px;color:#111;background:#fff;font-family:inherit;outline:none;transition:border-color .2s}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:#0070f3}
+.form-field textarea{min-height:90px;resize:vertical}
+.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:500px){.form-grid-2{grid-template-columns:1fr}}
+.submit-btn{width:100%;padding:14px;background:#0070f3;border:none;border-radius:10px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit}
+.submit-btn:hover{background:#0070f3dd;transform:translateY(-1px)}
+.success-msg{display:none;background:#d1fae5;border:1px solid #6ee7b7;color:#065f46;padding:12px;border-radius:8px;text-align:center;font-size:14px;margin-top:12px}
+
+footer{background:#111;color:rgba(255,255,255,0.7);padding:48px 5% 24px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+.footer-brand .logo{font-size:20px;font-weight:900;color:#0070f3;margin-bottom:10px}
+.footer-brand p{font-size:13px;line-height:1.7}
+.footer-col h4{color:#fff;font-size:13px;font-weight:700;margin-bottom:14px;text-transform:uppercase;letter-spacing:0.5px}
+.footer-col a{display:block;color:rgba(255,255,255,0.5);font-size:13px;text-decoration:none;padding:4px 0;transition:color .2s;cursor:pointer}
+.footer-col a:hover{color:#0070f3}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px}
+/* MOBILE BOTTOM NAV */
+.mobile-bottom-nav{display:none;position:fixed;bottom:0;left:0;width:100%;background:#fff;border-top:1px solid #e5e7eb;z-index:2000;box-shadow:0 -4px 12px rgba(0,0,0,0.05);height:65px;align-items:center;justify-content:space-around}
+.mb-nav-item{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#6b7280;font-size:11px;font-weight:600;text-decoration:none;flex:1;height:100%}
+.mb-nav-item svg{width:22px;height:22px;margin-bottom:4px;fill:currentColor}
+.mb-nav-item.active{color:#0070f3}
+.mb-center{flex:0 0 70px;display:flex;justify-content:center;cursor:pointer}
+.mb-center-in{width:60px;height:60px;background:#fff;border-radius:50%;padding:4px;box-shadow:0 -4px 10px rgba(0,0,0,0.1);display:flex;align-items:center;justify-content:center;transform:translateY(-15px)}
+.mb-center-in img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+@media(max-width:768px){.mobile-bottom-nav{display:flex}body{padding-bottom:65px}}
+
+.float-btn { position: fixed; bottom: 85px; right: 20px; background: #0070f3; color: #fff; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px #0070f360; z-index: 100; text-decoration: none; animation: floatPulse 3s ease-in-out infinite; }
+@keyframes floatPulse { 0% { transform: translateY(0) scale(1); box-shadow: 0 4px 12px #0070f360; } 50% { transform: translateY(-6px) scale(1.05); box-shadow: 0 12px 24px #0070f340; } 100% { transform: translateY(0) scale(1); box-shadow: 0 4px 12px #0070f360; } }
+@media(min-width: 769px) { .float-btn { bottom: 30px; right: 30px; width: 64px; height: 64px; } }
+.sf-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); z-index: 3000; align-items: center; justify-content: center; padding: 20px; animation: fadeIn 0.2s; }
+.sf-modal-inner { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; width: 100%; max-width: 500px; padding: 32px; position: relative; animation: modalIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; transform: translateY(20px) scale(0.95); opacity: 0; }
+@keyframes modalIn { to { transform: translateY(0) scale(1); opacity: 1; } }
+.sf-modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 24px; color: #111; cursor: pointer; transition: transform 0.2s; }
+.sf-modal-close:hover{transform:rotate(90deg)}
+</style>
+<div class="emergency-bar"><div class="emg-dot"></div><span data-cms="emergency_bar__span_1"><strong>24/7 Emergency HVAC / AC Service</strong> in Dallas, TX — Call: <a href="tel:+1 (555) 234-5678" class="emg-link" data-cms="emergency_bar__a_1">+1 (555) 234-5678</a></span></div>
+<nav><div class="nav-inner">
+<div class="nav-logo">nfgnfgjnfgjgggfhfghsdf</div>
+<div class="nav-links">
+  <span class="sf-nav-link active" data-page="home" onclick="showPage('home')" data-cms="nav_links__span_1">Home</span>
+  <span class="sf-nav-link" data-page="about" onclick="showPage('about')" data-cms="nav_links__span_2">About Us</span>
+  <span class="sf-nav-link" data-page="services" onclick="showPage('services')" data-cms="nav_links__span_3">Services</span>
+  <span class="sf-nav-link" data-page="portfolio" onclick="showPage('portfolio')" data-cms="nav_links__span_4">Portfolio</span>
+  <span class="sf-nav-link" data-page="reviews" onclick="showPage('reviews')" data-cms="nav_links__span_5">Reviews</span>
+  <span class="sf-nav-link" data-page="faq" onclick="showPage('faq')" data-cms="nav_links__span_6">FAQ</span>
+  <span class="sf-nav-link" data-page="contact" onclick="showPage('contact')" data-cms="nav_links__span_7">Contact</span>
+</div>
+<button class="nav-cta" onclick="showPage('bookings')" data-cms="nav_inner__button_1">Book Now</button>
+<button class="ham" onclick="toggleMob()" data-cms="nav_inner__button_2">☰</button>
+</div></nav>
+<div id="mob-menu">
+  <button class="mob-close" onclick="toggleMob()" data-cms="mob_menu__button_1">✕</button>
+  <span class="sf-nav-link" data-page="home" onclick="showPage('home')" data-cms="mob_menu__span_1">Home</span>
+  <span class="sf-nav-link" data-page="about" onclick="showPage('about')" data-cms="mob_menu__span_2">About Us</span>
+  <span class="sf-nav-link" data-page="services" onclick="showPage('services')" data-cms="mob_menu__span_3">Services</span>
+  <span class="sf-nav-link" data-page="portfolio" onclick="showPage('portfolio')" data-cms="mob_menu__span_4">Portfolio</span>
+  <span class="sf-nav-link" data-page="reviews" onclick="showPage('reviews')" data-cms="mob_menu__span_5">Reviews</span>
+  <span class="sf-nav-link" data-page="faq" onclick="showPage('faq')" data-cms="mob_menu__span_6">FAQ</span>
+  <span class="sf-nav-link" data-page="contact" onclick="showPage('contact')" data-cms="mob_menu__span_7">Contact Us</span>
+</div>
+
+<!-- HOME PAGE -->
+<div id="page-home" class="sf-page">
+  <div style="max-width:1200px;margin:0 auto;padding:80px 5%">
+    <div class="hero" style="padding:0;margin:0">
+      <div>
+        <div class="hero-eyebrow">⭐ 18+ Years in Dallas, TX</div>
+        <h1 data-cms="hero__h1_1">nfgnfgjnfgjgggfhfghsdf's<br><em>Expert HVAC / AC Service</em><br>Services</h1>
+        <p class="hero-sub" data-cms="hero__p_1">Keeping Dallas Comfortable Year-Round — Fast, Reliable HVAC Service</p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="showPage('bookings')" data-cms="hero_btns__button_1">Book a Service</button>
+          <button class="btn-secondary" onclick="showPage('portfolio')" data-cms="hero_btns__button_2">View Our Work</button>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="https://images.pexels.com/photos/30210086/pexels-photo-30210086.jpeg" alt="HVAC / AC Service services" loading="lazy" data-cms-img="hero_img__img_1">
+        <div class="hero-img-badge">
+          <div><div class="badge-val">4.9★</div><div class="badge-txt">Google Rating</div></div>
+          <div style="width:1px;height:36px;background:#e5e7eb"></div>
+          <div><div class="badge-val">512+</div><div class="badge-txt">Reviews</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div><span class="stat-val" data-cms="stats_inner__span_1">4.9★</span><span class="stat-lbl" data-cms="stats_inner__span_2">Google Rating</span></div>
+      <div><span class="stat-val" data-cms="stats_inner__span_3">512+</span><span class="stat-lbl" data-cms="stats_inner__span_4">Happy Clients</span></div>
+      <div><span class="stat-val" data-cms="stats_inner__span_5">18+</span><span class="stat-lbl" data-cms="stats_inner__span_6">Years Experience</span></div>
+      <div><span class="stat-val" data-cms="stats_inner__span_7">4800+</span><span class="stat-lbl" data-cms="stats_inner__span_8">Projects Done</span></div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">Our Services</div>
+        <h2 data-cms="section_header__h2_1">What We Do Best</h2>
+        <p data-cms="section_header__p_1">Professional hvac / ac service solutions for homes and businesses across Dallas, TX</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" onclick="openServiceModal('AC Installation', 'Professional ac installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div><h3 data-cms="service_card__h3_1">AC Installation</h3><p data-cms="service_card__p_1">Professional ac installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div><div class="service-card" onclick="openServiceModal('AC Repair &amp; Tune-Up', 'Professional ac repair &amp; tune-up services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div><h3 data-cms="service_card__h3_2">AC Repair &amp; Tune-Up</h3><p data-cms="service_card__p_2">Professional ac repair &amp; tune-up services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div><div class="service-card" onclick="openServiceModal('Heating System Repair', 'Professional heating system repair services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div><h3 data-cms="service_card__h3_3">Heating System Repair</h3><p data-cms="service_card__p_3">Professional heating system repair services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div><div class="service-card" onclick="openServiceModal('Furnace Installation', 'Professional furnace installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div><h3 data-cms="service_card__h3_4">Furnace Installation</h3><p data-cms="service_card__p_4">Professional furnace installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div><div class="service-card" onclick="openServiceModal('Duct Cleaning', 'Professional duct cleaning services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div><h3 data-cms="service_card__h3_5">Duct Cleaning</h3><p data-cms="service_card__p_5">Professional duct cleaning services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div><div class="service-card" onclick="openServiceModal('Air Quality Testing', 'Professional air quality testing services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div><h3 data-cms="service_card__h3_6">Air Quality Testing</h3><p data-cms="service_card__p_6">Professional air quality testing services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div>
+      </div>
+      <div style="text-align:center;margin-top:32px"><button class="btn-secondary" onclick="showPage('services')" data-cms="section_inner__button_1">View All Services →</button></div>
+    </div>
+  </div>
+  <div class="section" style="background:#f9fafb">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">Why Choose Us</div>
+        <h2 data-cms="section_header__h2_2">The nfgnfgjnfgjgggfhfghsdf Difference</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px">
+        <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div><h3 data-cms="service_card__h3_7">Industry Experts</h3><p data-cms="service_card__p_7">All technicians are certified and have years of field experience.</p></div><div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div><h3 data-cms="service_card__h3_8">Fast Response</h3><p data-cms="service_card__p_8">We confirm bookings within 2 hours and arrive on schedule.</p></div><div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div><h3 data-cms="service_card__h3_9">Fair Pricing</h3><p data-cms="service_card__p_9">Transparent quotes with no surprise charges. Best value guaranteed.</p></div><div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div><h3 data-cms="service_card__h3_10">Fully Insured</h3><p data-cms="service_card__p_10">Licensed and insured for your complete peace of mind.</p></div><div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div><h3 data-cms="service_card__h3_11">5★ Rated</h3><p data-cms="service_card__p_11">Consistently rated top in ${biz.city} on Google by our customers.</p></div><div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div><h3 data-cms="service_card__h3_12">30-Day Guarantee</h3><p data-cms="service_card__p_12">We stand behind our work with a full workmanship guarantee.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="section alt-bg">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">Testimonials</div>
+        <h2 data-cms="section_header__h2_3">What Clients Say</h2>
+        <p data-cms="section_header__p_2">4.9★ average from 512+ verified reviews</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text" data-cms="review_card__p_1">"ProComfort had my AC running perfectly within 2 hours. The tech was knowledgeable, clean, and explained everything clearly. Best HVAC company I've used."</p><div class="review-author"><div class="review-avatar">J</div><div><div class="review-name">James Carter</div><div class="review-date">1 week ago</div></div></div></div><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text" data-cms="review_card__p_2">"Our furnace went out on the coldest night of the year. They were at our door in 45 minutes. Truly a lifesaver — highly recommend for emergency service."</p><div class="review-author"><div class="review-avatar">L</div><div><div class="review-name">Linda Hoffman</div><div class="review-date">2 weeks ago</div></div></div></div><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text" data-cms="review_card__p_3">"Annual maintenance plan is totally worth it. They catch small issues before they become expensive repairs. Very professional crew."</p><div class="review-author"><div class="review-avatar">M</div><div><div class="review-name">Marcus Webb</div><div class="review-date">1 month ago</div></div></div></div>
+      </div>
+      <div style="text-align:center;margin-top:32px"><button class="btn-secondary" onclick="showPage('reviews')" data-cms="section_inner__button_2">Read All Reviews →</button></div>
+    </div>
+  </div>
+  <div class="section" style="background:#0070f3;padding:64px 5%">
+    <div style="max-width:700px;margin:0 auto;text-align:center">
+      <h2 style="color:#fff;font-size:clamp(28px,3vw,40px);font-weight:900;letter-spacing:-1px;margin-bottom:16px" data-cms="section__h2_1">Ready to Get Started?</h2>
+      <p style="color:rgba(255,255,255,0.85);font-size:16px;margin-bottom:32px;line-height:1.7" data-cms="section__p_1">We respond within 30 minutes for emergencies.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <button class="btn-primary" style="background:#fff;color:#0070f3" onclick="showPage('bookings')" data-cms="section__button_1">Book a Service</button>
+        <a href="tel:+1 (555) 234-5678" style="background:transparent;border:2px solid rgba(255,255,255,0.6);color:#fff;padding:13px 28px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none" data-cms="section__a_1">+1 (555) 234-5678</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- SERVICES PAGE -->
+<div id="page-services" class="sf-page" style="display:none">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">All Services</div>
+        <h2 data-cms="section_header__h2_4">Comprehensive Solutions</h2>
+        <p data-cms="section_header__p_3">Professional hvac / ac service services tailored to your needs in Dallas, TX</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" onclick="openServiceModal('AC Installation', 'Professional ac installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div><h3 data-cms="service_card__h3_13">AC Installation</h3><p data-cms="service_card__p_13">Professional ac installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div><div class="service-card" onclick="openServiceModal('AC Repair &amp; Tune-Up', 'Professional ac repair &amp; tune-up services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div><h3 data-cms="service_card__h3_14">AC Repair &amp; Tune-Up</h3><p data-cms="service_card__p_14">Professional ac repair &amp; tune-up services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div><div class="service-card" onclick="openServiceModal('Heating System Repair', 'Professional heating system repair services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div><h3 data-cms="service_card__h3_15">Heating System Repair</h3><p data-cms="service_card__p_15">Professional heating system repair services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div><div class="service-card" onclick="openServiceModal('Furnace Installation', 'Professional furnace installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div><h3 data-cms="service_card__h3_16">Furnace Installation</h3><p data-cms="service_card__p_16">Professional furnace installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div><div class="service-card" onclick="openServiceModal('Duct Cleaning', 'Professional duct cleaning services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div><h3 data-cms="service_card__h3_17">Duct Cleaning</h3><p data-cms="service_card__p_17">Professional duct cleaning services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div><div class="service-card" onclick="openServiceModal('Air Quality Testing', 'Professional air quality testing services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')" style="cursor:pointer"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div><h3 data-cms="service_card__h3_18">Air Quality Testing</h3><p data-cms="service_card__p_18">Professional air quality testing services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT PAGE -->
+<div id="page-about" class="sf-page" style="display:none">
+  <div class="section">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img"><img src="https://plus.unsplash.com/premium_photo-1661963078581-a4f091315692?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8SGVhdGluZyUyMCUyNiUyMEZ1cm5hY2UlMjBpbiUyMEhWQUN8ZW58MHx8MHx8fDA%3D" alt="About nfgnfgjnfgjgggfhfghsdf" loading="lazy" data-cms-img="about_img__img_1"></div>
+        <div class="about-text">
+          <div class="eyebrow">About Us</div>
+          <h2 data-cms="about_text__h2_1">The Story Behind nfgnfgjnfgjgggfhfghsdf</h2>
+          <p data-cms="about_text__p_1">With over <strong>18 years</strong> of dedicated service in Dallas, TX, nfgnfgjnfgjgggfhfghsdf has built a reputation for delivering exceptional hvac services with integrity, skill, and a genuine care for our customers.</p>
+          <p data-cms="about_text__p_2">Founded by seasoned hvac professionals, our company started with a simple mission: provide reliable, high-quality hvac / ac service services at fair prices. Today, we're proud to be Dallas, TX's most trusted name in hvac with a team of 24 certified professionals.</p>
+          <p data-cms="about_text__p_3">Every job we take on — whether a routine service call or a complex installation — receives the same level of attention and professionalism. We don't cut corners, and we always clean up after ourselves.</p>
+          <ul class="check-list">
+            <li>Fully licensed &amp; insured professionals</li>
+            <li>Transparent pricing — no hidden fees</li>
+            <li>24/7 emergency response available</li>
+            <li>30-day workmanship guarantee on all jobs</li>
+            <li>Serving Dallas, TX for 18+ years</li>
+            <li>Team of 24 certified specialists</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+      </div>
+    
+  
+
+
+
+<!-- PORTFOLIO PAGE -->
+<div id="page-portfolio" class="sf-page" style="display:none">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">Our Work</div>
+        <h2 data-cms="section_header__h2_5">Recent Projects</h2>
+        <p data-cms="section_header__p_4">4800+ successful projects completed across Dallas, TX</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-card"><img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Hvac Project — Residential" loading="lazy" data-cms-img="portfolio_card__img_1"><div class="portfolio-overlay"><h3 data-cms="portfolio_overlay__h3_1">Hvac Project — Residential</h3><span data-cms="portfolio_overlay__span_1">2024 · Dallas, TX</span></div></div><div class="portfolio-card"><img src="https://www.modernhvac.com/wp-content/uploads/2023/10/Furnace-service2-683x1024.jpg" alt="Commercial AC Installation Installation" loading="lazy" data-cms-img="portfolio_card__img_2"><div class="portfolio-overlay"><h3 data-cms="portfolio_overlay__h3_2">Commercial AC Installation Installation</h3><span data-cms="portfolio_overlay__span_2">2023 · Dallas, TX</span></div></div><div class="portfolio-card"><img src="https://images.unsplash.com/photo-1665826254140-28fa3d8738a1?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Emergency hvac Work" loading="lazy" data-cms-img="portfolio_card__img_3"><div class="portfolio-overlay"><h3 data-cms="portfolio_overlay__h3_3">Emergency hvac Work</h3><span data-cms="portfolio_overlay__span_3">2022 · Dallas, TX</span></div></div><div class="portfolio-card"><img src="https://media.istockphoto.com/id/1284843352/photo/the-technicians-are-cleaning-the-air-conditioner-by-spraying-water-hand-and-water-spray-are.webp?a=1&amp;b=1&amp;s=612x612&amp;w=0&amp;k=20&amp;c=sJyiPhLk0LJdpvJAsswYqeOSwZWypX2qztfCc-XvREk=" alt="Premium AC Repair &amp; Tune-Up Setup" loading="lazy" data-cms-img="portfolio_card__img_4"><div class="portfolio-overlay"><h3 data-cms="portfolio_overlay__h3_4">Premium AC Repair &amp; Tune-Up Setup</h3><span data-cms="portfolio_overlay__span_4">2021 · Dallas, TX</span></div></div>
+      </div>
+      <div style="text-align:center;margin-top:48px">
+        <div class="eyebrow">Trusted By</div>
+        <h2 style="font-size:clamp(24px,2.5vw,34px);font-weight:900;letter-spacing:-1px;margin:14px 0 8px" data-cms="section_inner__h2_1">Our Services at a Glance</h2>
+        <p style="color:#6b7280;margin-bottom:40px" data-cms="section_inner__p_1">Full range of professional hvac / ac service services</p>
+        <div class="services-grid">
+          <div class="service-card" style="text-align:left;cursor:pointer" onclick="openServiceModal('AC Installation', 'Professional ac installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div><h3 data-cms="service_card__h3_19">AC Installation</h3><p data-cms="service_card__p_19">Professional ac installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div><div class="service-card" style="text-align:left;cursor:pointer" onclick="openServiceModal('AC Repair &amp; Tune-Up', 'Professional ac repair &amp; tune-up services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div><h3 data-cms="service_card__h3_20">AC Repair &amp; Tune-Up</h3><p data-cms="service_card__p_20">Professional ac repair &amp; tune-up services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div><div class="service-card" style="text-align:left;cursor:pointer" onclick="openServiceModal('Heating System Repair', 'Professional heating system repair services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div><h3 data-cms="service_card__h3_21">Heating System Repair</h3><p data-cms="service_card__p_21">Professional heating system repair services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div><div class="service-card" style="text-align:left;cursor:pointer" onclick="openServiceModal('Furnace Installation', 'Professional furnace installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div><h3 data-cms="service_card__h3_22">Furnace Installation</h3><p data-cms="service_card__p_22">Professional furnace installation services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div><div class="service-card" style="text-align:left;cursor:pointer" onclick="openServiceModal('Duct Cleaning', 'Professional duct cleaning services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div><h3 data-cms="service_card__h3_23">Duct Cleaning</h3><p data-cms="service_card__p_23">Professional duct cleaning services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div><div class="service-card" style="text-align:left;cursor:pointer" onclick="openServiceModal('Air Quality Testing', 'Professional air quality testing services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.')"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><polyline points="20 6 9 17 4 12"></polyline></svg></div><h3 data-cms="service_card__h3_24">Air Quality Testing</h3><p data-cms="service_card__p_24">Professional air quality testing services with certified experts, guaranteed quality, and transparent pricing. Available across all areas.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS PAGE -->
+<div id="page-reviews" class="sf-page" style="display:none">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">Client Reviews</div>
+        <h2 data-cms="section_header__h2_6">What Our Clients Say</h2>
+        <p data-cms="section_header__p_5">4.9★ average on Google from 512+ verified reviews</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;margin-bottom:48px">
+        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text" data-cms="review_card__p_4">"ProComfort had my AC running perfectly within 2 hours. The tech was knowledgeable, clean, and explained everything clearly. Best HVAC company I've used."</p><div class="review-author"><div class="review-avatar">J</div><div><div class="review-name">James Carter</div><div class="review-date">1 week ago</div></div></div></div><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text" data-cms="review_card__p_5">"Our furnace went out on the coldest night of the year. They were at our door in 45 minutes. Truly a lifesaver — highly recommend for emergency service."</p><div class="review-author"><div class="review-avatar">L</div><div><div class="review-name">Linda Hoffman</div><div class="review-date">2 weeks ago</div></div></div></div><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text" data-cms="review_card__p_6">"Annual maintenance plan is totally worth it. They catch small issues before they become expensive repairs. Very professional crew."</p><div class="review-author"><div class="review-avatar">M</div><div><div class="review-name">Marcus Webb</div><div class="review-date">1 month ago</div></div></div></div><div class="review-card"><div class="review-stars">★★★★☆</div><p class="review-text" data-cms="review_card__p_7">"Great experience from scheduling to completion. The duct cleaning made a noticeable difference in our air quality. Will definitely use again."</p><div class="review-author"><div class="review-avatar">A</div><div><div class="review-name">Angela Torres</div><div class="review-date">1 month ago</div></div></div></div><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text" data-cms="review_card__p_8">"Installed a new heat pump system — they did a fantastic job. Clean install, explained the thermostat settings, and followed up the next day."</p><div class="review-author"><div class="review-avatar">S</div><div><div class="review-name">Steve Nguyen</div><div class="review-date">2 months ago</div></div></div></div><div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text" data-cms="review_card__p_9">"Fair pricing, no hidden fees, and the technician was extremely thorough. This is the only HVAC company I trust with my home."</p><div class="review-author"><div class="review-avatar">D</div><div><div class="review-name">Donna Price</div><div class="review-date">2 months ago</div></div></div></div>
+      </div>
+      <div style="background:#0070f308;border:1px solid #0070f320;border-radius:20px;padding:40px;text-align:center">
+        <div style="font-size:64px;font-weight:900;color:#0070f3;line-height:1">4.9</div>
+        <div style="color:#f59e0b;font-size:24px;margin:8px 0">★★★★★</div>
+        <div style="font-size:18px;font-weight:700;color:#111;margin-bottom:6px">512+ Google Reviews</div>
+        <div style="color:#6b7280;font-size:14px;margin-bottom:20px">Based on verified reviews from customers across Dallas, TX</div>
+        <button class="btn-primary" onclick="window.open('https://g.page/r/demo','_blank')" data-cms="section_inner__button_3">⭐ Leave a Review on Google</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ PAGE -->
+<div id="page-faq" class="sf-page" style="display:none">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">FAQ</div>
+        <h2 data-cms="section_header__h2_7">Frequently Asked Questions</h2>
+        <p data-cms="section_header__p_6">Quick answers about our hvac / ac service services</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Are you available on weekends?<span class="faq-icon" data-cms="faq_q__span_1">+</span></div><div class="faq-a">Yes! We operate Mon–Fri: 7AM–9PM, Sat–Sun: 8AM–6PM. For genuine emergencies, we are available 24/7 including holidays.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you provide a service guarantee?<span class="faq-icon" data-cms="faq_q__span_2">+</span></div><div class="faq-a">Absolutely. All our hvac services come with a 30-day workmanship guarantee. If you're not satisfied, we return and fix it at no cost.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How quickly can you arrive?<span class="faq-icon" data-cms="faq_q__span_3">+</span></div><div class="faq-a">For standard bookings in Dallas, TX, we confirm within 2 hours. For emergency calls, we typically arrive within 45–60 minutes.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Are your professionals certified?<span class="faq-icon" data-cms="faq_q__span_4">+</span></div><div class="faq-a">Yes, all our HVAC / AC Service professionals are fully certified, background-verified, and carry valid licenses. We only employ trained specialists.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What areas do you serve?<span class="faq-icon" data-cms="faq_q__span_5">+</span></div><div class="faq-a">We serve all major areas across Dallas, TX and surrounding regions. Contact us to confirm coverage in your specific location.</div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How is pricing determined?<span class="faq-icon" data-cms="faq_q__span_6">+</span></div><div class="faq-a">We provide transparent, upfront quotes after a brief assessment. No hidden charges. Our pricing is competitive and we offer service packages for regular clients.</div></div>
+      </div>
+      <div style="text-align:center;margin-top:40px;padding:32px;background:#f9fafb;border-radius:16px">
+        <h3 style="font-size:20px;font-weight:800;margin-bottom:8px" data-cms="section_inner__h3_1">Still have questions?</h3>
+        <p style="color:#6b7280;margin-bottom:20px" data-cms="section_inner__p_2">Our team is happy to help answer any questions about our services.</p>
+        <button class="btn-primary" onclick="showPage('contact')" data-cms="section_inner__button_4">📞 Contact Us</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT PAGE -->
+<div id="page-contact" class="sf-page" style="display:none">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">Contact Us</div>
+        <h2 data-cms="section_header__h2_8">Book a Service</h2>
+        <p data-cms="section_header__p_7">We respond within 30 minutes during business hours</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2 data-cms="contact_info__h2_1">Get in Touch</h2>
+          <p data-cms="contact_info__p_1">Ready to book a hvac service or have a question? We'd love to hear from you. Our team is available Mon–Fri: 7AM–9PM, Sat–Sun: 8AM–6PM.</p>
+          <div class="contact-detail"><div class="c-icon">📞</div><div><div class="c-label">Phone</div><div class="c-val">+1 (555) 234-5678</div></div></div>
+          <div class="contact-detail"><div class="c-icon">✉️</div><div><div class="c-label">Email</div><div class="c-val">service@procomforthvac.com</div></div></div>
+          <div class="contact-detail"><div class="c-icon">📍</div><div><div class="c-label">Address</div><div class="c-val">450 Commerce St, Suite 200, Dallas, TX 75202</div></div></div>
+          <div class="contact-detail"><div class="c-icon">🕐</div><div><div class="c-label">Working Hours</div><div class="c-val">Mon–Fri: 7AM–9PM, Sat–Sun: 8AM–6PM</div></div></div>
+          <div class="contact-detail"><div class="c-icon">🚨</div><div><div class="c-label">Emergency</div><div class="c-val">24/7 Available</div></div></div>
+        </div>
+        <div class="contact-form">
+          <h3 style="font-size:20px;font-weight:800;margin-bottom:24px" data-cms="contact_form__h3_1">Request a Callback</h3>
+          <div class="form-grid-2">
+            <div class="form-field"><label data-cms="form_field__label_1">Your Name</label><input type="text" placeholder="Rahul Sharma"></div>
+            <div class="form-field"><label data-cms="form_field__label_2">Phone Number</label><input type="tel" placeholder="+1 (555) 234-5678"></div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-field"><label data-cms="form_field__label_3">Email</label><input type="email" placeholder="Email Address"></div>
+            <div class="form-field"><label data-cms="form_field__label_4">Property Address</label><input type="text" placeholder="Street, City, Zip"></div>
+          </div>
+          <div class="form-field"><label data-cms="form_field__label_5">Service Required</label><select><option>AC Installation</option><option>AC Repair &amp; Tune-Up</option><option>Heating System Repair</option><option>Furnace Installation</option><option>Duct Cleaning</option><option>Air Quality Testing</option></select></div>
+          <div class="form-grid-2">
+            <div class="form-field"><label data-cms="form_field__label_6">Property Size</label><input type="text" placeholder="e.g. 2000 sq ft"></div>
+            <div class="form-field"><label data-cms="form_field__label_7">Preferred Date</label><input type="date"></div>
+          </div>
+          <div class="form-field"><label data-cms="form_field__label_8">Service Add-ons</label><input type="text" placeholder="Any specific requests?"></div>
+          <div class="form-field"><label data-cms="form_field__label_9">Message</label><textarea placeholder="Describe your requirement..."></textarea></div>
+          <button class="submit-btn" onclick="submitForm(this)" data-cms="contact_form__button_1">📞 Request Callback</button>
+          <div class="success-msg">✅ We'll call you back within 30 minutes!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKINGS PAGE -->
+<div id="page-bookings" class="sf-page" style="display:none">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="eyebrow">Bookings</div>
+        <h2 data-cms="section_header__h2_9">Schedule an Appointment</h2>
+        <p data-cms="section_header__p_8">Select a time that works for you.</p>
+      </div>
+      <div style="background:#fff; border:1px solid #e5e7eb; border-radius:20px; overflow:hidden; padding:20px; box-shadow:0 4px 40px rgba(0,0,0,0.06);">
+        <!-- Calendly inline widget begin -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/ojasdenge-lx/30min?hide_event_type_details=1&amp;hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async=""></script>
+        <!-- Calendly inline widget end -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer><div class="footer-inner">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">nfgnfgjnfgjgggfhfghsdf</div>
+      <p data-cms="footer_brand__p_1">Your trusted hvac / ac service partner in Dallas, TX. Professional, reliable, affordable.</p>
+      <div style="display:flex;gap:12px;margin-top:16px">
+        <a href="https://facebook.com/demo" target="_blank" style="font-size:24px;text-decoration:none" data-cms="footer_brand__a_1">📱</a>
+        <a href="https://instagram.com/demo" target="_blank" style="font-size:24px;text-decoration:none" data-cms="footer_brand__a_2">📸</a>
+        <a href="https://g.page/r/demo" target="_blank" style="font-size:24px;text-decoration:none" data-cms="footer_brand__a_3">⭐</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4 data-cms="footer_col__h4_1">Services</h4><a onclick="showPage('portfolio')" data-cms="footer_col__a_1">AC Installation</a><a onclick="showPage('portfolio')" data-cms="footer_col__a_2">AC Repair &amp; Tune-Up</a><a onclick="showPage('portfolio')" data-cms="footer_col__a_3">Heating System Repair</a><a onclick="showPage('portfolio')" data-cms="footer_col__a_4">Furnace Installation</a><a onclick="showPage('portfolio')" data-cms="footer_col__a_5">Duct Cleaning</a></div>
+    <div class="footer-col"><h4 data-cms="footer_col__h4_2">Company</h4><a onclick="showPage('about')" data-cms="footer_col__a_6">About Us</a><a onclick="showPage('portfolio')" data-cms="footer_col__a_7">Portfolio</a><a onclick="showPage('reviews')" data-cms="footer_col__a_8">Reviews</a><a onclick="showPage('faq')" data-cms="footer_col__a_9">FAQ</a><a onclick="showPage('contact')" data-cms="footer_col__a_10">Contact</a></div>
+    <div class="footer-col"><h4 data-cms="footer_col__h4_3">Contact</h4><a href="tel:+1 (555) 234-5678" data-cms="footer_col__a_11">+1 (555) 234-5678</a><a href="mailto:service@procomforthvac.com" data-cms="footer_col__a_12">service@procomforthvac.com</a><a data-cms="footer_col__a_13">Dallas, TX</a><a data-cms="footer_col__a_14">Mon–Fri: 7AM–9PM, Sat–Sun: 8AM–6PM</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span data-cms="footer_bottom__span_1">© 2026 nfgnfgjnfgjgggfhfghsdf. All rights reserved.</span>
+    <span style="display:flex;gap:16px" data-cms="footer_bottom__span_2">
+      <a href="privacy-policy.html" style="color:inherit;text-decoration:none" data-cms="footer_bottom__a_1">Privacy</a>
+      <a href="terms-of-service.html" style="color:inherit;text-decoration:none" data-cms="footer_bottom__a_2">Terms</a>
+      <a href="cookie-policy.html" style="color:inherit;text-decoration:none" data-cms="footer_bottom__a_3">Cookies</a>
+    </span>
+  </div>
+</div></footer>
+
+<div class="mobile-bottom-nav">
+  <div class="mb-nav-item mb-active" data-page="home" onclick="showPage('home')">
+    <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+    <span data-cms="mb_nav_item__span_1">Home</span>
+  </div>
+  <div class="mb-nav-item" data-page="services" onclick="showPage('services')">
+    <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"></path></svg>
+    <span data-cms="mb_nav_item__span_2">Services</span>
+  </div>
+  <div class="mb-center" onclick="showPage('home')">
+    <div class="mb-center-in">
+      <img src="https://images.pexels.com/photos/30210086/pexels-photo-30210086.jpeg" alt="Logo" data-cms-img="mb_center_in__img_1">
+    </div>
+  </div>
+  <div class="mb-nav-item" data-page="portfolio" onclick="showPage('portfolio')">
+    <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"></path></svg>
+    <span data-cms="mb_nav_item__span_3">Portfolio</span>
+  </div>
+  <div class="mb-nav-item" data-page="contact" onclick="showPage('contact')">
+    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+    <span data-cms="mb_nav_item__span_4">Contact</span>
+  </div>
+</div>
+
+<a href="tel:+1 (555) 234-5678" class="float-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:32px;height:32px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></a>
+
+<div id="srvModal" class="sf-modal" onclick="if(event.target===this) this.style.display='none'">
+  <div class="sf-modal-inner">
+    <button class="sf-modal-close" onclick="document.getElementById('srvModal').style.display='none'" data-cms="sf_modal_inner__button_1">✕</button>
+    <h2 id="srvModalTitle" style="margin-bottom:16px;font-size:24px" data-cms="sf_modal_inner__h2_1">Service Details</h2>
+    <p id="srvModalDesc" style="color:#6b7280;line-height:1.6;margin-bottom:24px"></p>
+    <ul class="check-list" style="margin-bottom:32px">
+      <li>Free estimates provided</li>
+      <li>Satisfaction guaranteed</li>
+      <li>Professional execution</li>
+    </ul>
+    <button class="btn-primary" style="width:100%" onclick="document.getElementById('srvModal').style.display='none'; showPage('contact')" data-cms="sf_modal_inner__button_2">Get a Quote</button>
+  </div>
+</div>
+
+<script>
+  function openServiceModal(name, desc) {
+    document.getElementById('srvModalTitle').textContent = name;
+    document.getElementById('srvModalDesc').textContent = desc || 'Comprehensive ' + name.toLowerCase() + ' solutions tailored to your specific needs.';
+    document.getElementById('srvModal').style.display = 'flex';
+  }
+
+function showPage(id) {
+  document.querySelectorAll('.sf-page').forEach(p => p.style.display='none');
+  document.getElementById('page-'+id).style.display='block';
+  document.querySelectorAll('.sf-nav-link').forEach(l => l.classList.remove('active'));
+  const el = document.querySelector('[data-page="'+id+'"]');
+  if(el) el.classList.add('active');
+  window.scrollTo(0,0);
+  document.getElementById('mob-menu').style.display='none';
+  const o = document.getElementById('mob-menu-overlay');
+  if(o) o.style.display='none';
+}
+function toggleMob() {
+  const m = document.getElementById('mob-menu');
+  const o = document.getElementById('mob-menu-overlay');
+  const show = m.style.display==='flex';
+  m.style.display = show ? 'none' : 'flex';
+  if(o) o.style.display = show ? 'none' : 'block';
+}
+function submitForm(btn) {
+  btn.textContent = '✓ Request Sent!';
+  btn.style.opacity='0.7';
+  btn.nextElementSibling.style.display='block';
+}
+function toggleFaq(el) {
+  const ans = el.nextElementSibling;
+  ans.style.display = ans.style.display==='block' ? 'none' : 'block';
+  el.querySelector('.faq-icon').textContent = ans.style.display==='block' ? '−' : '+';
+}
+
+</script>
+<script>window.CMS_CONFIG={apiBase:window.location.origin+"/website-builder"}</script>
+<script src="cms-editor.js"></script>
+</body></html>
