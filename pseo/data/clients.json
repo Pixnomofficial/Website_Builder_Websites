@@ -1,0 +1,118 @@
+[
+  {
+    "id": "7e832ea7-dbee-4e42-82fb-850f70fd3001",
+    "wants_site": true,
+    "user_email": "shreyashchandak321@gmail.com",
+    "project_name": "ProComfort HVAC",
+    "design_id": "modern-minimal",
+    "site_url": "https://Pixnomofficial.github.io/WebsiteBuilder/procomfort-hvac/",
+    "business_data": {
+      "name": "ProComfort HVAC",
+      "type": "hvac",
+      "typeLabel": "HVAC",
+      "tagline": "Comfort you can count on, all year round.",
+      "phone": "555-0192",
+      "email": "shreyashchandak321@gmail.com",
+      "city": "Pune",
+      "hours": "Mon-Fri 8am-6pm",
+      "rating": "4.9",
+      "reviews": "150",
+      "years": "10",
+      "services": ["AC Installation", "Heating Repair", "Duct Cleaning", "Emergency Service"],
+      "serviceDescriptions": {
+        "AC Installation": "Efficient cooling systems fitted and tested.",
+        "Heating Repair": "Fast fixes before the cold sets in.",
+        "Duct Cleaning": "Cleaner air and better airflow throughout.",
+        "Emergency Service": "Same-day callouts when it matters most."
+      }
+    },
+    "services": ["AC Installation", "Heating Repair", "Duct Cleaning", "Emergency Service"]
+  },
+  {
+    "id": "a63cce38-6276-4728-b103-741dc106e022",
+    "wants_site": true,
+    "user_email": "snehakabra.px@gmail.com",
+    "project_name": "Sneha's Art Gallery",
+    "design_id": "wedding",
+    "site_url": "https://Pixnomofficial.github.io/WebsiteBuilder/snehas-art-gallery/",
+    "business_data": {
+      "name": "Sneha's Art Gallery",
+      "type": "painters",
+      "typeLabel": "Painting Services",
+      "tagline": "Where every canvas tells a story.",
+      "phone": "555-0248",
+      "email": "snehakabra.px@gmail.com",
+      "city": "Mumbai",
+      "hours": "Tue-Sun 10am-7pm",
+      "rating": "4.8",
+      "reviews": "92",
+      "years": "6",
+      "services": ["Interior Painting", "Exterior Painting", "Custom Murals", "Art Classes"],
+      "serviceDescriptions": {
+        "Interior Painting": "Colour consultation and flawless finishes.",
+        "Exterior Painting": "Weatherproof coats that last for years.",
+        "Custom Murals": "Bespoke wall art for homes and offices.",
+        "Art Classes": "Small-group sessions for all skill levels."
+      }
+    },
+    "services": ["Interior Painting", "Exterior Painting", "Custom Murals", "Art Classes"]
+  },
+  {
+    "id": "afc11e82-156f-413e-98d6-c3c3eedf5501",
+    "wants_site": false,
+    "user_email": "shreyashchandak321@gmail.com",
+    "project_name": "Sharma Electricals",
+    "design_id": "neumorphism",
+    "site_url": "https://Pixnomofficial.github.io/WebsiteBuilder/sharma-electricals/",
+    "business_data": {
+      "name": "Sharma Electricals",
+      "type": "electrician",
+      "typeLabel": "Electrician",
+      "tagline": "Powering homes with trusted expertise.",
+      "phone": "555-0311",
+      "email": "shreyashchandak321@gmail.com",
+      "city": "Pune",
+      "hours": "Mon-Sat 9am-7pm",
+      "rating": "4.7",
+      "reviews": "203",
+      "years": "12",
+      "services": ["Driveway Installation", "Concrete Patios", "Wiring & Rewiring", "Fault Finding"],
+      "serviceDescriptions": {
+        "Driveway Installation": "Durable installs built to last.",
+        "Concrete Patios": "Clean finishes for outdoor spaces.",
+        "Wiring & Rewiring": "Safe, certified electrical work.",
+        "Fault Finding": "Quick diagnosis of tricky faults."
+      }
+    },
+    "services": ["Driveway Installation", "Concrete Patios", "Wiring & Rewiring", "Fault Finding"]
+  },
+  {
+    "id": "f3297bb8-8402-4327-9323-d8f052e81014",
+    "wants_site": true,
+    "user_email": "shreyash04812@gmail.com",
+    "project_name": "Shreyash Builders",
+    "design_id": "education",
+    "site_url": "https://Pixnomofficial.github.io/WebsiteBuilder/shreyash-builders/",
+    "business_data": {
+      "name": "Shreyash Builders",
+      "type": "home-builders",
+      "typeLabel": "Home Builders",
+      "tagline": "Building your vision from the ground up.",
+      "phone": "555-0477",
+      "email": "shreyash04812@gmail.com",
+      "city": "Nagpur",
+      "hours": "Mon-Fri 8am-6pm",
+      "rating": "4.9",
+      "reviews": "68",
+      "years": "8",
+      "services": ["Custom Home Building", "Spec Home Development", "Renovations", "Project Management"],
+      "serviceDescriptions": {
+        "Custom Home Building": "Homes designed around how you live.",
+        "Spec Home Development": "Move-in-ready quality builds.",
+        "Renovations": "Modern upgrades to existing spaces.",
+        "Project Management": "One point of contact, start to finish."
+      }
+    },
+    "services": ["Custom Home Building", "Spec Home Development", "Renovations", "Project Management"]
+  }
+]
