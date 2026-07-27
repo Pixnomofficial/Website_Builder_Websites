@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loading site…</title>
+  <style>
+    html, body { margin: 0; height: 100%; }
+    body { font-family: system-ui, sans-serif; background: #fff; }
+    #loading, #not-found {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      height: 100vh; color: #6b7280; text-align: center; padding: 24px;
+    }
+    #not-found h1 { color: #111; margin: 0 0 8px; }
+    #siteFrame { width: 100%; height: 100vh; border: 0; display: block; }
+    .hidden { display: none !important; }
+    #theme-tag {
+      position: fixed; bottom: 14px; right: 14px; z-index: 9999;
+      font: 500 12px ui-monospace, monospace; background: #111; color: #fff;
+      padding: 6px 12px; border-radius: 20px; opacity: 0.85; pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="loading">Loading site…</div>
+
+  <div id="not-found" class="hidden">
+    <h1>Site not found</h1>
+    <p>This link doesn't match any published site. Double-check the URL and try again.</p>
+  </div>
+
+  <!-- The generated site is a full standalone HTML document, so it renders
+       inside an isolated iframe (its own CSS/JS can't clash with this page). -->
+  <iframe id="siteFrame" class="hidden" title="Website preview"></iframe>
+  <div id="theme-tag" class="hidden"></div>
+
+  <!-- The 30 REAL design templates from the Website Builder -->
+  <script src="js/designs/01-modern-minimal.js"></script>
+  <script src="js/designs/02-modern-dark.js"></script>
+  <script src="js/designs/03-glassmorphism.js"></script>
+  <script src="js/designs/04-premium-luxury.js"></script>
+  <script src="js/designs/05-corporate.js"></script>
+  <script src="js/designs/06-classic-elegant.js"></script>
+  <script src="js/designs/07-real-estate.js"></script>
+  <script src="js/designs/08-saas-modern.js"></script>
+  <script src="js/designs/09-cyberpunk.js"></script>
+  <script src="js/designs/10-neobrutalism.js"></script>
+  <script src="js/designs/11-neumorphism.js"></script>
+  <script src="js/designs/12-retro.js"></script>
+  <script src="js/designs/13-ai-startup.js"></script>
+  <script src="js/designs/14-agency.js"></script>
+  <script src="js/designs/15-fintech.js"></script>
+  <script src="js/designs/16-bold-color.js"></script>
+  <script src="js/designs/17-minimalist-bw.js"></script>
+  <script src="js/designs/18-magazine.js"></script>
+  <script src="js/designs/19-tech-startup.js"></script>
+  <script src="js/designs/20-warm-local.js"></script>
+  <script src="js/designs/21-bio-organic.js"></script>
+  <script src="js/designs/22-holographic.js"></script>
+  <script src="js/designs/23-portfolio.js"></script>
+  <script src="js/designs/24-sports.js"></script>
+  <script src="js/designs/25-medical.js"></script>
+  <script src="js/designs/26-restaurant-dark.js"></script>
+  <script src="js/designs/27-wedding.js"></script>
+  <script src="js/designs/28-law.js"></script>
+  <script src="js/designs/29-education.js"></script>
+  <script src="js/designs/30-automotive.js"></script>
+
+  <!-- The real render engine (SaaS core.js, builder-bootstrap disabled) -->
+  <script src="js/core.render.js"></script>
+  <!-- pSEO glue: fetch row -> buildWebsite() -> iframe -->
+  <script src="js/render.js"></script>
+</body>
+</html>
