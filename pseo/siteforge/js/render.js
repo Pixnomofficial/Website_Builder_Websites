@@ -87,7 +87,13 @@ function pickDesign(row) {
 
     const biz = toBiz(row);
     const design = pickDesign(row);
-    const html = buildWebsite(biz, design);
+    const raw = buildWebsite(biz, design);
+
+    // Tag for CMS editing and inline the editor script (srcdoc iframes can't load external JS)
+    const { tagged } = tagHTMLForCMS(raw);
+    const cmsApiBase = JSON.stringify(window.location.origin);
+    const html = tagged
+      .replace('</body>', '<script>window.CMS_CONFIG={apiBase:' + cmsApiBase + '}</script>\n<script>' + CMS_EDITOR_SCRIPT + '</script>\n</body>');
 
     frame.srcdoc = html;
     document.title = biz.name + " — " + design.name;
