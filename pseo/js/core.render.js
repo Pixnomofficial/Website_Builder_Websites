@@ -1,8 +1,11 @@
+// pSEO render mode — disables builder UI bootstrap (init, auto-load, etc.)
+window.__PSEO_RENDER__ = true;
+
 
 // ==================== IMAGE RESOLVER ====================
 function resolveImageUrl(img, params = '') {
   if (!img) return '';
-  if (img.startsWith('http://') || img.startsWith('https://')) {
+  if (img.startsWith('http://') || img.startsWith('https://') || img.startsWith('images/') || img.startsWith('./') || img.startsWith('/') || img.startsWith('data:')) {
     return img;
   }
   if (img.includes('unsplash.com')) {
@@ -44,10 +47,12 @@ const DESIGNS = [
   { id: 'law', name: 'Law Firm', tag: 'Gold · Authority · Classical', cat: 'dark', accent: '#b8960c', bg: '#0d0d00', text: '#f5f0dc', dark: true, layout: 'law-hero' },
   { id: 'education', name: 'Education Bright', tag: 'Yellow · Friendly · Playful', cat: 'light', accent: '#ff9800', bg: '#fff5e6', text: '#2a1a00', dark: false, layout: 'edu-hero' },
   { id: 'automotive', name: 'Automotive Dark', tag: 'Red · Power · Speed', cat: 'dark', accent: '#ff3d00', bg: '#050505', text: '#f0f0f0', dark: true, layout: 'auto-hero' },
+  { id: 'earthy-grove', name: 'Earthy Grove', tag: 'NGO · Forest Green · Community', cat: 'light', accent: '#e78b38', bg: '#176b4d', text: '#ffffff', dark: true, layout: 'grove-hero' },
   { id: 'atomic', name: 'Atomic', tag: 'Neon · Yellow · Dark', cat: 'dark', accent: '#e2fa06', bg: '#0d0d0d', text: '#ffffff', dark: true, layout: 'atomic-hero' },
 ];
 
 const SERVICES_MAP = {
+  'environment-ngo': ['Reforestation & Tree Planting', 'River & Watershed Restoration', 'Wildlife Habitat Conservation', 'Community Botanical Nursery', 'Solar Eco-Center & Clean Energy', 'Environmental Education Workshops', 'Native Seed Bank Preservation', 'Urban Green Spaces', 'Volunteer Community Programs', 'Eco-System Biodiversity Audits', 'Organic Soil Regeneration', 'Recycling & Zero-Waste Advocacy'],
   hvac: ['AC Installation', 'AC Repair & Tune-Up', 'Heating System Repair', 'Furnace Installation', 'Duct Cleaning', 'Air Quality Testing', 'Thermostat Installation', 'Commercial HVAC', 'Emergency Repair', 'Annual Maintenance', 'Ventilation Systems', 'Heat Pump Service'],
   roofing: ['Roof Installation', 'Roof Repair', 'Roof Replacement', 'Waterproofing', 'Gutter Cleaning', 'Roof Inspection', 'Tile & Shingle Repair', 'Skylight Installation', 'Commercial Roofing', 'Emergency Tarping', 'Roof Coating', 'Storm Damage Repair'],
   plumbing: ['Pipe Installation', 'Drain Cleaning', 'Water Heater Service', 'Leak Detection & Repair', 'Bathroom Plumbing', 'Toilet Repair', 'Sewer Line Repair', 'Pump Installation', 'Kitchen Plumbing', 'Emergency Repair', 'Repiping', 'Water Filtration'],
@@ -426,6 +431,14 @@ const REVIEWS_MAP = {
     { name: 'Asha Rao', text: 'Got implants done after years of hesitation. Absolutely no pain. Amazing results.', stars: 5, date: '2 months ago' },
     { name: 'Kiran Desai', text: 'Very reasonable pricing and great quality treatment. Highly satisfied.', stars: 4, date: '3 months ago' },
   ],
+  'environment-ngo': [
+    { name: 'Dr. Elena Vance', text: 'Their native reforestation program planted over 5,000 trees across our watershed. Exceptional transparency, dedication, and measurable ecological impact.', stars: 5, date: '3 days ago' },
+    { name: 'Marcus Sterling', text: 'The community botanical nursery and educational workshops empowered hundreds of local families. A truly transformative non-profit initiative.', stars: 5, date: '2 weeks ago' },
+    { name: 'Aaliyah Chen', text: 'We partnered with them on our municipal riverbank restoration. The stream clarity and wildlife biodiversity returned within a single season.', stars: 5, date: '3 weeks ago' },
+    { name: 'David Thorne', text: 'Incredible volunteer coordination and zero-waste initiatives. Every donation is put directly toward active field conservation projects.', stars: 5, date: '1 month ago' },
+    { name: 'Sarah Jenkins', text: 'Their solar eco-center workshops gave our community practical sustainable solutions. Professional, passionate, and deeply committed team.', stars: 5, date: '1 month ago' },
+    { name: 'Carlos Mendez', text: 'The seed bank preservation project is securing indigenous plant genetics for future generations. Outstanding work and leadership.', stars: 5, date: '2 months ago' }
+  ],
   default: [
     { name: 'James Carter', text: 'Outstanding service quality. Very professional team and reasonable pricing. Couldn\'t be happier with the results.', stars: 5, date: '1 week ago' },
     { name: 'Linda Morrison', text: 'Excellent experience from start to finish. Arrived on time, worked efficiently, and cleaned up perfectly. Will definitely use again!', stars: 5, date: '2 weeks ago' },
@@ -437,6 +450,17 @@ const REVIEWS_MAP = {
 };
 
 const SERVICE_IMAGES = {
+  'environment-ngo': {
+    hero: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1800&q=85',
+    about: 'https://images.unsplash.com/photo-1594708767771-a7502209ff51?auto=format&fit=crop&w=1000&q=85',
+    portfolio: [
+      'https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=900&q=80'
+    ]
+  },
   'appliance-repair': { hero: 'photo-1556911220-bff31c812dba', about: 'photo-1770991190796-a121c47467eb', portfolio: ['https://media.istockphoto.com/id/2094985685/photo/young-latin-handyman-repairs-the-dishwasher-in-the-clients-kitchen.webp?a=1&b=1&s=612x612&w=0&k=20&c=Q29azOvleCf-c926dPDv5ZIBMvWyOZGLqEujlpAJnlw=', 'photo-1562941995-17dc31eaaf6d', 'photo-1603114595741-e60bf9486e04', 'photo-1620568400263-6f1cf95b9e30'] },
   'chimney': { hero: 'photo-1600585154340-be6161a56a0c', about: 'https://images.pexels.com/photos/34033126/pexels-photo-34033126.jpeg', portfolio: ['https://images.pexels.com/photos/36424119/pexels-photo-36424119.jpeg', 'https://images.pexels.com/photos/37623616/pexels-photo-37623616.jpeg', 'https://images.pexels.com/photos/18253918/pexels-photo-18253918.jpeg', 'photo-1666307592912-87d02022957f'] },
   'commercial-cleaning': { hero: 'https://images.pexels.com/photos/20381389/pexels-photo-20381389.jpeg', about: 'https://images.pexels.com/photos/34517609/pexels-photo-34517609.jpeg', portfolio: ['https://images.pexels.com/photos/8273517/pexels-photo-8273517.jpeg', 'photo-1763026227930-ec2c91d4e7f2', 'photo-1669101602108-fa5ba89507ee', 'https://plus.unsplash.com/premium_photo-1683141112334-d7d404f6e716?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Q29tbWVyY2lhbCUyMENsZWFuaW5nJTIwU2VydmljZXN8ZW58MHx8MHx8fDA%3D'] },
@@ -479,6 +503,7 @@ const SERVICE_IMAGES = {
 
 // ── Per-service YouTube video embed IDs (short ~60-90s promo clips) ─────────
 const SERVICE_VIDEOS = {
+  'environment-ngo': 'sNpBLB-XYXI',
   hvac: 'KUBjWWcTwD4',
   roofing: 'zqhUMKYqHx0',
   plumbing: 'pHBMDFi3YOo',
@@ -535,6 +560,7 @@ const SERVICE_VIDEOS = {
 
 // ── Per-service logo icon & brand color hint ─────────────────────────────────
 const SERVICE_LOGO = {
+  'environment-ngo': { icon: '🌱', label: 'Eco & NGO' },
   hvac: { icon: '❄️', label: 'HVAC' },
   roofing: { icon: '🏗️', label: 'Roofing' },
   plumbing: { icon: '🔧', label: 'Plumbing' },
@@ -612,6 +638,19 @@ let currentLeadId = null;
 
 // Default descriptions for all built-in services
 const SERVICE_DEFAULT_DESCRIPTIONS = {
+  // NGO & Environmental
+  'Reforestation & Tree Planting': 'Restoring indigenous forest canopies and planting native species to capture carbon and rebuild natural habitats.',
+  'River & Watershed Restoration': 'Stream clearing, riparian buffer planting, and bio-engineering to protect water quality and aquatic life.',
+  'Wildlife Habitat Conservation': 'Establishing protected corridors, nesting grounds, and sanctuaries for endangered local wildlife.',
+  'Community Botanical Nursery': 'Cultivating native saplings, medicinal plants, and organic seedlings with community stewardship.',
+  'Solar Eco-Center & Clean Energy': 'Educational clean energy initiatives and solar-powered community hubs demonstrating renewable sustainability.',
+  'Environmental Education Workshops': 'Hands-on outdoor learning, biodiversity workshops, and youth eco-literacy leadership programs.',
+  'Native Seed Bank Preservation': 'Collecting, cataloging, and safeguarding indigenous botanical seed genetics for ecosystem resilience.',
+  'Urban Green Spaces': 'Transforming unused urban areas into pollinator-friendly micro-parks and community pocket groves.',
+  'Volunteer Community Programs': 'Coordinated weekend field conservation days and volunteer stewardship initiatives.',
+  'Eco-System Biodiversity Audits': 'Scientific habitat assessments and wildlife tracking to measure ecological health and recovery.',
+  'Organic Soil Regeneration': 'Composting, mycorrhizal inoculation, and cover cropping to restore degraded topsoil.',
+  'Recycling & Zero-Waste Advocacy': 'Community circular-economy campaigns, composting hubs, and plastic reduction drives.',
   // HVAC
   'AC Installation': 'Professional air conditioning installation with energy-efficient systems tailored to your home or business.',
   'AC Repair & Tune-Up': 'Fast diagnostics and reliable repairs to restore your AC to peak performance.',
@@ -663,6 +702,18 @@ const SERVICE_DEFAULT_DESCRIPTIONS = {
   'Kitchen Plumbing': 'Kitchen plumbing installation and repair — sinks, dishwashers, garbage disposals, and more.',
   'Repiping': 'Whole-house repiping with modern materials to eliminate old, corroded pipes.',
   'Water Filtration': 'Whole-home and under-sink water filtration system installation for clean, safe water.',
+  // Window Cleaning
+  'Residential Window Cleaning': 'Crystal clear, streak-free window cleaning for homes, townhouses, and estates.',
+  'Commercial Window Cleaning': 'Scheduled interior and exterior window washing for offices, retail stores, and commercial buildings.',
+  'High-Rise Window Cleaning': 'Certified high-rise and multi-story window cleaning services using safety-compliant rigging.',
+  'Interior & Exterior Cleaning': 'Comprehensive cleaning of glass surfaces inside and out for maximum sunlight and clarity.',
+  'Screen Cleaning & Repair': 'Deep washing and mesh repair for window screens to keep airflow fresh and bug-free.',
+  'Window Track & Sill Cleaning': 'Detailed cleaning of tracks, sills, and frames to remove built-up dust, grime, and debris.',
+  'Hard Water Stain Removal': 'Specialized treatment to restore glass clarity affected by mineral deposits and hard water spots.',
+  'Skylight Cleaning': 'Safe, effective cleaning of roof skylights to brighten your living or working space.',
+  'Solar Panel Cleaning': 'Gentle, streak-free solar panel washing to improve efficiency and energy production.',
+  'Pressure Washing Add-On': 'Exterior surface pressure washing paired with window cleaning for complete curb appeal.',
+  'Post-Construction Window Cleaning': 'Removal of paint specks, overspray, plaster, and construction dust from new window installs.',
 };
 
 function getServiceDescription(name) {
@@ -1005,16 +1056,24 @@ function generatePreview() {
   showLoading('Generating website...', 'Building ' + selectedDesign.name + ' design with 6 pages');
   goStep(4);
   setTimeout(() => {
-    generatedHTML = buildWebsite(biz, selectedDesign);
-    const frame = document.getElementById('previewFrame');
-    frame.srcdoc = generatedHTML;
-    resetEditMode(); // fresh preview replaces any prior inline edits
-    document.getElementById('statDesign').textContent = selectedDesign.name;
-    document.getElementById('statServices').textContent = biz.services.length;
-    document.getElementById('statRating').textContent = biz.rating + '★';
-    document.getElementById('iframeTitle').textContent = biz.name + ' — ' + selectedDesign.name;
-    hideLoading();
-    storeLead(biz);
+    try {
+      generatedHTML = buildWebsite(biz, selectedDesign);
+      const frame = document.getElementById('previewFrame');
+      frame.srcdoc = generatedHTML;
+      resetEditMode(); // fresh preview replaces any prior inline edits
+      document.getElementById('statDesign').textContent = selectedDesign.name;
+      document.getElementById('statServices').textContent = biz.services.length;
+      document.getElementById('statRating').textContent = biz.rating + '★';
+      document.getElementById('iframeTitle').textContent = biz.name + ' — ' + selectedDesign.name;
+      storeLead(biz);
+    } catch (err) {
+      // Never leave the user stuck behind the overlay — surface the failure instead.
+      console.error('[generatePreview] failed to build ' + selectedDesign.id + ':', err);
+      showToast('Could not generate this design: ' + err.message);
+      goStep(3);
+    } finally {
+      hideLoading();
+    }
   }, 900);
 }
 
@@ -1040,9 +1099,9 @@ function storeLead(biz) {
 }
 
 // ==================== CMS TAGGING ====================
-const CMS_EDITOR_SCRIPT = `/* CMS Content Editor */(function(){var editMode=false,originalData={};var API_BASE=window.CMS_CONFIG&&window.CMS_CONFIG.apiBase||'';function loadContent(){return fetch('content.json').then(function(r){if(!r.ok)throw new Error('content.json not found');return r.json()}).then(function(d){originalData=d;applyContent(d)}).catch(function(){originalData=readFromDOM()})}function applyContent(d){document.querySelectorAll('[data-cms]').forEach(function(el){var k=el.getAttribute('data-cms');if(d[k]!==undefined)el.textContent=d[k]});document.querySelectorAll('[data-cms-img]').forEach(function(el){var k=el.getAttribute('data-cms-img');if(d[k]!==undefined)el.setAttribute('src',d[k])})}function readFromDOM(){var d={};document.querySelectorAll('[data-cms]').forEach(function(el){d[el.getAttribute('data-cms')]=el.textContent.trim()});document.querySelectorAll('[data-cms-img]').forEach(function(el){d[el.getAttribute('data-cms-img')]=el.getAttribute('src')});return d}function buildUI(){var bar=document.createElement('div');bar.id='cms-toolbar';bar.style.cssText='position:fixed;bottom:20px;left:20px;z-index:99999;display:flex;gap:10px;font-family:sans-serif;';var editBtn=document.createElement('button');editBtn.id='cms-edit-btn';editBtn.textContent='Edit Content';styleBtn(editBtn,'#1c1917');var saveBtn=document.createElement('button');saveBtn.id='cms-save-btn';saveBtn.textContent='Publish';styleBtn(saveBtn,'#15803d');saveBtn.style.display='none';bar.appendChild(editBtn);bar.appendChild(saveBtn);document.body.appendChild(bar);editBtn.addEventListener('click',function(){editMode=!editMode;toggleEdit(editMode);editBtn.textContent=editMode?'Preview':'Edit Content';saveBtn.style.display=editMode?'inline-flex':'none'});saveBtn.addEventListener('click',function(){saveBtn.textContent='Publishing...';saveBtn.disabled=true;publishCMS().then(function(){saveBtn.textContent='Published';showToast('Content published!','success');setTimeout(function(){saveBtn.textContent='Publish';saveBtn.disabled=false},2000)}).catch(function(e){saveBtn.textContent='Error';showToast('Publish failed: '+e.message,'error');setTimeout(function(){saveBtn.textContent='Publish';saveBtn.disabled=false},2000)})})}function styleBtn(b,c){b.style.cssText='padding:10px 20px;border:none;border-radius:8px;color:white;font-weight:600;cursor:pointer;font-size:14px;background:'+c}function toggleEdit(on){document.querySelectorAll('[data-cms]').forEach(function(el){el.contentEditable=on;el.style.outline=on?'2px dashed #3b82f6':'';el.style.borderRadius=on?'4px':''});document.querySelectorAll('[data-cms-img]').forEach(function(el){el.style.cursor=on?'pointer':'';if(on){el.onclick=function(){var url=prompt('Image URL:',el.src);if(url)el.src=url}}else{el.onclick=null}})}function publishCMS(){var data=readFromDOM();return fetch(API_BASE+'/api/publish/cms',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({slug:window.location.pathname.split('/').filter(Boolean).pop(),contentJson:data})}).then(function(r){return r.json()}).then(function(d){if(!d.success)throw new Error(d.error||'Publish failed')})}loadContent();buildUI()})();`;
+const CMS_EDITOR_SCRIPT = `/* CMS Content Editor */(function(){var editMode=false,originalData={};var API_BASE=window.CMS_CONFIG&&window.CMS_CONFIG.apiBase||'';function loadContent(){return fetch('content.json').then(function(r){if(!r.ok)throw new Error('content.json not found');return r.json()}).then(function(d){originalData=d;applyContent(d)}).catch(function(){originalData=readFromDOM()})}function applyContent(d){document.querySelectorAll('[data-cms]').forEach(function(el){var k=el.getAttribute('data-cms');if(d[k]!==undefined)el.textContent=d[k]});document.querySelectorAll('[data-cms-img]').forEach(function(el){var k=el.getAttribute('data-cms-img');if(d[k]!==undefined)el.setAttribute('src',d[k])})}function readFromDOM(){var d={};document.querySelectorAll('[data-cms]').forEach(function(el){d[el.getAttribute('data-cms')]=el.textContent.trim()});document.querySelectorAll('[data-cms-img]').forEach(function(el){d[el.getAttribute('data-cms-img')]=el.getAttribute('src')});return d}function buildUI(){var bar=document.createElement('div');bar.id='cms-toolbar';bar.style.cssText='position:fixed;bottom:20px;left:20px;z-index:99999;display:flex;gap:10px;font-family:sans-serif;';var editBtn=document.createElement('button');editBtn.id='cms-edit-btn';editBtn.textContent='Edit Content';styleBtn(editBtn,'#1c1917');var saveBtn=document.createElement('button');saveBtn.id='cms-save-btn';saveBtn.textContent='Publish';styleBtn(saveBtn,'#15803d');saveBtn.style.display='none';bar.appendChild(editBtn);bar.appendChild(saveBtn);document.body.appendChild(bar);editBtn.addEventListener('click',function(){editMode=!editMode;toggleEdit(editMode);editBtn.textContent=editMode?'Preview':'Edit Content';saveBtn.style.display=editMode?'inline-flex':'none'});saveBtn.addEventListener('click',function(){saveBtn.textContent='Publishing...';saveBtn.disabled=true;publishCMS().then(function(){saveBtn.textContent='Published';showToast('Content published!','success');setTimeout(function(){saveBtn.textContent='Publish';saveBtn.disabled=false},2000)}).catch(function(e){saveBtn.textContent='Publish';saveBtn.disabled=false;showToast('Error: '+e.message,'error')})})}function styleBtn(b,bg){b.style.cssText+='padding:12px 20px;border:none;border-radius:6px;background:'+bg+';color:#fff;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.25);font-size:14px;'}function toggleEdit(on){document.querySelectorAll('[data-cms]').forEach(function(el){el.contentEditable=on;el.style.outline=on?'2px dashed #d97706':'none';el.style.outlineOffset=on?'2px':'0';el.style.cursor=on?'text':'default'});document.querySelectorAll('[data-cms-img]').forEach(function(el){el.style.outline=on?'2px dashed #d97706':'none';el.style.cursor=on?'pointer':'default';if(on){el.addEventListener('click',imgClick)}else{el.removeEventListener('click',imgClick)}})}function imgClick(e){e.preventDefault();var el=e.currentTarget;var cur=el.getAttribute('src');var url=prompt('Paste a new image URL:',cur);if(url&&url.trim())el.setAttribute('src',url.trim())}function publishCMS(){var data=readFromDOM();var slug=window.CMS_CONFIG&&window.CMS_CONFIG.slug||window.location.pathname.replace(/^\\/|\\/$/g,'').split('/').pop()||'';return fetch(API_BASE+'/website-builder/api/publish/cms',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({slug:slug,contentJson:JSON.stringify(data,null,2)})}).then(function(r){return r.json()}).then(function(d){if(!d.success)throw new Error(d.error&&d.error.message||d.message||'Publish failed')})}function showToast(msg,type){var t=document.createElement('div');t.style.cssText='position:fixed;bottom:80px;left:20px;z-index:99999;padding:12px 20px;border-radius:6px;color:#fff;font-family:sans-serif;font-size:14px;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.25);transition:opacity 0.3s;background:'+(type==='success'?'#15803d':'#dc2626');t.textContent=msg;document.body.appendChild(t);setTimeout(function(){t.style.opacity='0';setTimeout(function(){t.remove()},300)},4000)}document.addEventListener('DOMContentLoaded',function(){loadContent().then(buildUI)})})();`;
 
-const CMS_TAGS = ['h1','h2','h3','h4','h5','p','span','a','button','label'];
+const CMS_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'span', 'a', 'button', 'label'];
 
 function tagHTMLForCMS(html) {
   const parser = new DOMParser();
@@ -1107,8 +1166,13 @@ function tagHTMLForCMS(html) {
     mapping[key] = src;
   });
 
+  // Bake the BUILDER's origin (e.g. https://app.pixnom.com) into the published page.
+  // Evaluated now, at generation time — NOT on the published GitHub Pages site, whose
+  // origin has no backend. publishCMS() appends "/website-builder/api/..." itself, so
+  // apiBase is just the origin (no "/website-builder" suffix, which caused a double prefix).
+  const cmsApiBase = JSON.stringify(window.location.origin);
   let tagged = '<!DOCTYPE html>\n' + doc.documentElement.outerHTML;
-  tagged = tagged.replace('</body>', '<script>window.CMS_CONFIG={apiBase:window.location.origin+"/website-builder"}</script>\n<script src="cms-editor.js"></script>\n</body>');
+  tagged = tagged.replace('</body>', '<script>window.CMS_CONFIG={apiBase:' + cmsApiBase + '}</script>\n<script src="cms-editor.js"></script>\n</body>');
 
   return { tagged, contentJson: mapping };
 }
@@ -1140,28 +1204,22 @@ async function publishSite() {
   }
 
   try {
-    const { tagged, contentJson } = tagHTMLForCMS(generatedHTML);
-    const contentJsonStr = JSON.stringify(contentJson, null, 2);
-
-    const res = await fetch('/website-builder/api/publish', {
+    // pSEO: save to Supabase + set wants_site trigger — served from siteforge-pseo/
+    const res = await fetch('/website-builder/api/publish-pseo', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        slug,
-        user_email: window.__AUTH_EMAIL__ || '',
         project_id: currentProjectId,
-        files: {
-          'index.html': tagged,
-          'content.json': contentJsonStr,
-          'cms-editor.js': CMS_EDITOR_SCRIPT
-        }
+        user_email: window.__AUTH_EMAIL__ || '',
+        design_id: selectedDesign.id
       })
     });
     const data = await res.json();
     if (data.success) {
       el.innerHTML = 'Published! <a href="' + data.url + '" target="_blank">' + data.url + '</a>';
       el.style.color = 'var(--success)';
-      btn.textContent = 'Published ✓';
+      btn.textContent = 'Publish New Changes';
+      btn.disabled = false;
       // Update project record with live URL
       if (currentProjectId) {
         fetch(API_BASE, {
@@ -1540,40 +1598,54 @@ function toggleFaq(el) {
 
   // Choose the design-specific template builder
   const builders = {
-    'modern-minimal': buildModernMinimal,
-    'modern-dark': buildModernDark,
-    'glassmorphism': buildGlassmorphism,
-    'premium-luxury': buildPremiumLuxury,
-    'corporate': buildCorporate,
-    'classic-elegant': buildClassicElegant,
-    'real-estate': buildRealEstate,
-    'saas-modern': buildSaasModern,
-    'cyberpunk': buildCyberpunk,
-    'neobrutalism': buildNeobrutalism,
-    'neumorphism': buildNeumorphism,
-    'retro': buildRetro,
-    'ai-startup': buildAiStartup,
-    'agency': buildAgency,
-    'fintech': buildFintech,
-    'bold-color': buildBoldColor,
-    'minimalist-bw': buildMinimalistBW,
-    'magazine': buildMagazine,
-    'tech-startup': buildTechStartup,
-    'warm-local': buildWarmLocal,
-    'bio-organic': buildBioOrganic,
-    'holographic': buildHolographic,
-    'portfolio': buildPortfolioDark,
-    'sports': buildSports,
-    'medical': buildMedical,
-    'restaurant-dark': buildRestaurantDark,
-    'wedding': buildWedding,
-    'law': buildLaw,
-    'education': buildEducation,
-    'automotive': buildAutomotive,
-    'atomic': buildAtomic,
+    'modern-minimal': 'buildModernMinimal',
+    'modern-dark': 'buildModernDark',
+    'glassmorphism': 'buildGlassmorphism',
+    'premium-luxury': 'buildPremiumLuxury',
+    'corporate': 'buildCorporate',
+    'classic-elegant': 'buildClassicElegant',
+    'real-estate': 'buildRealEstate',
+    'saas-modern': 'buildSaasModern',
+    'cyberpunk': 'buildCyberpunk',
+    'neobrutalism': 'buildNeobrutalism',
+    'neumorphism': 'buildNeumorphism',
+    'retro': 'buildRetro',
+    'ai-startup': 'buildAiStartup',
+    'agency': 'buildAgency',
+    'fintech': 'buildFintech',
+    'bold-color': 'buildBoldColor',
+    'minimalist-bw': 'buildMinimalistBW',
+    'magazine': 'buildMagazine',
+    'tech-startup': 'buildTechStartup',
+    'warm-local': 'buildWarmLocal',
+    'bio-organic': 'buildBioOrganic',
+    'holographic': 'buildHolographic',
+    'portfolio': 'buildPortfolioDark',
+    'sports': 'buildSports',
+    'medical': 'buildMedical',
+    'restaurant-dark': 'buildRestaurantDark',
+    'wedding': 'buildWedding',
+    'law': 'buildLaw',
+    'education': 'buildEducation',
+    'automotive': 'buildAutomotive',
+    'earthy-grove': 'buildEarthyGrove',
+    'atomic': 'buildAtomic',
   };
 
-  const builder = builders[D.id] || buildModernMinimal;
+  const G = typeof window !== 'undefined' ? window : globalThis;
+  const known = Object.prototype.hasOwnProperty.call(builders, D.id);
+  const builderName = known ? builders[D.id] : 'buildModernMinimal';
+  const builder = G[builderName];
+
+  if (typeof builder !== 'function') {
+    // The design script for this template did not load (404, blocked, stale
+    // cache) or declares a differently-named function than the map expects.
+    throw new Error(
+      builderName + '() is not loaded — check that js/designs/*.js for "' + D.id +
+      '" was deployed, returns 200, and declares function ' + builderName + '().'
+    );
+  }
+
   return builder(biz, D, reviews, imgs, portfolioItems, faqItems, typeName, imgBase, imgP, imgPs, navScript);
 }
 
@@ -2478,19 +2550,14 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 2600);
 }
 
-// NOTE: This is the SaaS builder's core.js reused UNCHANGED as the render
-// engine, EXCEPT the trailing builder-only bootstrap below is disabled — the
-// pSEO page has no builder UI DOM, so init()/auto-load must not run here.
-// render.js calls buildWebsite(biz, design) directly instead.
 if (typeof window !== 'undefined' && window.__PSEO_RENDER__ !== true) {
   init();
-
   // Auto-load project when ?project= is in the URL (from My Websites page)
-  (function() {
+  (function () {
     var params = new URLSearchParams(window.location.search);
     var projectId = params.get('project');
     if (projectId && window.__AUTH_EMAIL__) {
-      setTimeout(function() { loadProject(projectId); }, 300);
+      setTimeout(function () { loadProject(projectId); }, 300);
     }
   })();
 }
