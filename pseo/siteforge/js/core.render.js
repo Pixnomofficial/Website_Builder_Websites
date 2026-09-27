@@ -1,10 +1,11 @@
 // pSEO render mode — disables builder UI bootstrap (init, auto-load, etc.)
 window.__PSEO_RENDER__ = true;
 
+
 // ==================== IMAGE RESOLVER ====================
 function resolveImageUrl(img, params = '') {
   if (!img) return '';
-  if (img.startsWith('http://') || img.startsWith('https://')) {
+  if (img.startsWith('http://') || img.startsWith('https://') || img.startsWith('images/') || img.startsWith('./') || img.startsWith('/') || img.startsWith('data:')) {
     return img;
   }
   if (img.includes('unsplash.com')) {
@@ -46,10 +47,12 @@ const DESIGNS = [
   { id: 'law', name: 'Law Firm', tag: 'Gold · Authority · Classical', cat: 'dark', accent: '#b8960c', bg: '#0d0d00', text: '#f5f0dc', dark: true, layout: 'law-hero' },
   { id: 'education', name: 'Education Bright', tag: 'Yellow · Friendly · Playful', cat: 'light', accent: '#ff9800', bg: '#fff5e6', text: '#2a1a00', dark: false, layout: 'edu-hero' },
   { id: 'automotive', name: 'Automotive Dark', tag: 'Red · Power · Speed', cat: 'dark', accent: '#ff3d00', bg: '#050505', text: '#f0f0f0', dark: true, layout: 'auto-hero' },
+  { id: 'earthy-grove', name: 'Earthy Grove', tag: 'NGO · Forest Green · Community', cat: 'light', accent: '#e78b38', bg: '#176b4d', text: '#ffffff', dark: true, layout: 'grove-hero' },
   { id: 'atomic', name: 'Atomic', tag: 'Neon · Yellow · Dark', cat: 'dark', accent: '#e2fa06', bg: '#0d0d0d', text: '#ffffff', dark: true, layout: 'atomic-hero' },
 ];
 
 const SERVICES_MAP = {
+  'environment-ngo': ['Reforestation & Tree Planting', 'River & Watershed Restoration', 'Wildlife Habitat Conservation', 'Community Botanical Nursery', 'Solar Eco-Center & Clean Energy', 'Environmental Education Workshops', 'Native Seed Bank Preservation', 'Urban Green Spaces', 'Volunteer Community Programs', 'Eco-System Biodiversity Audits', 'Organic Soil Regeneration', 'Recycling & Zero-Waste Advocacy'],
   hvac: ['AC Installation', 'AC Repair & Tune-Up', 'Heating System Repair', 'Furnace Installation', 'Duct Cleaning', 'Air Quality Testing', 'Thermostat Installation', 'Commercial HVAC', 'Emergency Repair', 'Annual Maintenance', 'Ventilation Systems', 'Heat Pump Service'],
   roofing: ['Roof Installation', 'Roof Repair', 'Roof Replacement', 'Waterproofing', 'Gutter Cleaning', 'Roof Inspection', 'Tile & Shingle Repair', 'Skylight Installation', 'Commercial Roofing', 'Emergency Tarping', 'Roof Coating', 'Storm Damage Repair'],
   plumbing: ['Pipe Installation', 'Drain Cleaning', 'Water Heater Service', 'Leak Detection & Repair', 'Bathroom Plumbing', 'Toilet Repair', 'Sewer Line Repair', 'Pump Installation', 'Kitchen Plumbing', 'Emergency Repair', 'Repiping', 'Water Filtration'],
@@ -428,6 +431,14 @@ const REVIEWS_MAP = {
     { name: 'Asha Rao', text: 'Got implants done after years of hesitation. Absolutely no pain. Amazing results.', stars: 5, date: '2 months ago' },
     { name: 'Kiran Desai', text: 'Very reasonable pricing and great quality treatment. Highly satisfied.', stars: 4, date: '3 months ago' },
   ],
+  'environment-ngo': [
+    { name: 'Dr. Elena Vance', text: 'Their native reforestation program planted over 5,000 trees across our watershed. Exceptional transparency, dedication, and measurable ecological impact.', stars: 5, date: '3 days ago' },
+    { name: 'Marcus Sterling', text: 'The community botanical nursery and educational workshops empowered hundreds of local families. A truly transformative non-profit initiative.', stars: 5, date: '2 weeks ago' },
+    { name: 'Aaliyah Chen', text: 'We partnered with them on our municipal riverbank restoration. The stream clarity and wildlife biodiversity returned within a single season.', stars: 5, date: '3 weeks ago' },
+    { name: 'David Thorne', text: 'Incredible volunteer coordination and zero-waste initiatives. Every donation is put directly toward active field conservation projects.', stars: 5, date: '1 month ago' },
+    { name: 'Sarah Jenkins', text: 'Their solar eco-center workshops gave our community practical sustainable solutions. Professional, passionate, and deeply committed team.', stars: 5, date: '1 month ago' },
+    { name: 'Carlos Mendez', text: 'The seed bank preservation project is securing indigenous plant genetics for future generations. Outstanding work and leadership.', stars: 5, date: '2 months ago' }
+  ],
   default: [
     { name: 'James Carter', text: 'Outstanding service quality. Very professional team and reasonable pricing. Couldn\'t be happier with the results.', stars: 5, date: '1 week ago' },
     { name: 'Linda Morrison', text: 'Excellent experience from start to finish. Arrived on time, worked efficiently, and cleaned up perfectly. Will definitely use again!', stars: 5, date: '2 weeks ago' },
@@ -439,6 +450,17 @@ const REVIEWS_MAP = {
 };
 
 const SERVICE_IMAGES = {
+  'environment-ngo': {
+    hero: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1800&q=85',
+    about: 'https://images.unsplash.com/photo-1594708767771-a7502209ff51?auto=format&fit=crop&w=1000&q=85',
+    portfolio: [
+      'https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=900&q=80'
+    ]
+  },
   'appliance-repair': { hero: 'photo-1556911220-bff31c812dba', about: 'photo-1770991190796-a121c47467eb', portfolio: ['https://media.istockphoto.com/id/2094985685/photo/young-latin-handyman-repairs-the-dishwasher-in-the-clients-kitchen.webp?a=1&b=1&s=612x612&w=0&k=20&c=Q29azOvleCf-c926dPDv5ZIBMvWyOZGLqEujlpAJnlw=', 'photo-1562941995-17dc31eaaf6d', 'photo-1603114595741-e60bf9486e04', 'photo-1620568400263-6f1cf95b9e30'] },
   'chimney': { hero: 'photo-1600585154340-be6161a56a0c', about: 'https://images.pexels.com/photos/34033126/pexels-photo-34033126.jpeg', portfolio: ['https://images.pexels.com/photos/36424119/pexels-photo-36424119.jpeg', 'https://images.pexels.com/photos/37623616/pexels-photo-37623616.jpeg', 'https://images.pexels.com/photos/18253918/pexels-photo-18253918.jpeg', 'photo-1666307592912-87d02022957f'] },
   'commercial-cleaning': { hero: 'https://images.pexels.com/photos/20381389/pexels-photo-20381389.jpeg', about: 'https://images.pexels.com/photos/34517609/pexels-photo-34517609.jpeg', portfolio: ['https://images.pexels.com/photos/8273517/pexels-photo-8273517.jpeg', 'photo-1763026227930-ec2c91d4e7f2', 'photo-1669101602108-fa5ba89507ee', 'https://plus.unsplash.com/premium_photo-1683141112334-d7d404f6e716?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Q29tbWVyY2lhbCUyMENsZWFuaW5nJTIwU2VydmljZXN8ZW58MHx8MHx8fDA%3D'] },
@@ -481,6 +503,7 @@ const SERVICE_IMAGES = {
 
 // ── Per-service YouTube video embed IDs (short ~60-90s promo clips) ─────────
 const SERVICE_VIDEOS = {
+  'environment-ngo': 'sNpBLB-XYXI',
   hvac: 'KUBjWWcTwD4',
   roofing: 'zqhUMKYqHx0',
   plumbing: 'pHBMDFi3YOo',
@@ -537,6 +560,7 @@ const SERVICE_VIDEOS = {
 
 // ── Per-service logo icon & brand color hint ─────────────────────────────────
 const SERVICE_LOGO = {
+  'environment-ngo': { icon: '🌱', label: 'Eco & NGO' },
   hvac: { icon: '❄️', label: 'HVAC' },
   roofing: { icon: '🏗️', label: 'Roofing' },
   plumbing: { icon: '🔧', label: 'Plumbing' },
@@ -614,6 +638,19 @@ let currentLeadId = null;
 
 // Default descriptions for all built-in services
 const SERVICE_DEFAULT_DESCRIPTIONS = {
+  // NGO & Environmental
+  'Reforestation & Tree Planting': 'Restoring indigenous forest canopies and planting native species to capture carbon and rebuild natural habitats.',
+  'River & Watershed Restoration': 'Stream clearing, riparian buffer planting, and bio-engineering to protect water quality and aquatic life.',
+  'Wildlife Habitat Conservation': 'Establishing protected corridors, nesting grounds, and sanctuaries for endangered local wildlife.',
+  'Community Botanical Nursery': 'Cultivating native saplings, medicinal plants, and organic seedlings with community stewardship.',
+  'Solar Eco-Center & Clean Energy': 'Educational clean energy initiatives and solar-powered community hubs demonstrating renewable sustainability.',
+  'Environmental Education Workshops': 'Hands-on outdoor learning, biodiversity workshops, and youth eco-literacy leadership programs.',
+  'Native Seed Bank Preservation': 'Collecting, cataloging, and safeguarding indigenous botanical seed genetics for ecosystem resilience.',
+  'Urban Green Spaces': 'Transforming unused urban areas into pollinator-friendly micro-parks and community pocket groves.',
+  'Volunteer Community Programs': 'Coordinated weekend field conservation days and volunteer stewardship initiatives.',
+  'Eco-System Biodiversity Audits': 'Scientific habitat assessments and wildlife tracking to measure ecological health and recovery.',
+  'Organic Soil Regeneration': 'Composting, mycorrhizal inoculation, and cover cropping to restore degraded topsoil.',
+  'Recycling & Zero-Waste Advocacy': 'Community circular-economy campaigns, composting hubs, and plastic reduction drives.',
   // HVAC
   'AC Installation': 'Professional air conditioning installation with energy-efficient systems tailored to your home or business.',
   'AC Repair & Tune-Up': 'Fast diagnostics and reliable repairs to restore your AC to peak performance.',
@@ -1167,29 +1204,22 @@ async function publishSite() {
   }
 
   try {
-    // Tag HTML with CMS attributes and extract content.json
-    const { tagged, contentJson } = tagHTMLForCMS(generatedHTML);
-    const contentJsonStr = JSON.stringify(contentJson, null, 2);
-
-    const res = await fetch('/website-builder/api/publish', {
+    // pSEO: save to Supabase + set wants_site trigger — served from siteforge-pseo/
+    const res = await fetch('/website-builder/api/publish-pseo', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        slug,
-        user_email: window.__AUTH_EMAIL__ || '',
         project_id: currentProjectId,
-        files: {
-          'index.html': tagged,
-          'content.json': contentJsonStr,
-          'cms-editor.js': CMS_EDITOR_SCRIPT
-        }
+        user_email: window.__AUTH_EMAIL__ || '',
+        design_id: selectedDesign.id
       })
     });
     const data = await res.json();
     if (data.success) {
       el.innerHTML = 'Published! <a href="' + data.url + '" target="_blank">' + data.url + '</a>';
       el.style.color = 'var(--success)';
-      btn.textContent = 'Published ✓';
+      btn.textContent = 'Publish New Changes';
+      btn.disabled = false;
       // Update project record with live URL
       if (currentProjectId) {
         fetch(API_BASE, {
@@ -1598,6 +1628,7 @@ function toggleFaq(el) {
     'law': 'buildLaw',
     'education': 'buildEducation',
     'automotive': 'buildAutomotive',
+    'earthy-grove': 'buildEarthyGrove',
     'atomic': 'buildAtomic',
   };
 
@@ -2519,8 +2550,6 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 2600);
 }
 
-// pSEO: skip builder-only bootstrap — no builder UI DOM here.
-// render.js calls buildWebsite(biz, design) directly.
 if (typeof window !== 'undefined' && window.__PSEO_RENDER__ !== true) {
   init();
   // Auto-load project when ?project= is in the URL (from My Websites page)
